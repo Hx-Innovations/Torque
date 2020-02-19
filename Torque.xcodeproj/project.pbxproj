@@ -3,18 +3,59 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8857D48F23FDB6AE007587A2 /* SensorBodyAttachmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8857D48723FDB6AE007587A2 /* SensorBodyAttachmentViewController.swift */; };
+		8857D49023FDB6AE007587A2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8857D48823FDB6AE007587A2 /* ViewController.swift */; };
+		8857D49123FDB6AE007587A2 /* MVCLateralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8857D48923FDB6AE007587A2 /* MVCLateralViewController.swift */; };
+		8857D49223FDB6AE007587A2 /* SensoryTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8857D48A23FDB6AE007587A2 /* SensoryTypeViewController.swift */; };
+		8857D49323FDB6AE007587A2 /* PeripheralsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8857D48B23FDB6AE007587A2 /* PeripheralsViewController.swift */; };
+		8857D49423FDB6AE007587A2 /* MVCAnteriorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8857D48C23FDB6AE007587A2 /* MVCAnteriorViewController.swift */; };
+		8857D49523FDB6AE007587A2 /* OrgViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8857D48D23FDB6AE007587A2 /* OrgViewController.swift */; };
+		8857D49623FDB6AE007587A2 /* MVCPosterioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8857D48E23FDB6AE007587A2 /* MVCPosterioViewController.swift */; };
+		8857D49B23FDB6C2007587A2 /* emgHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8857D49823FDB6C2007587A2 /* emgHelper.swift */; };
+		8857D49C23FDB6C2007587A2 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8857D49923FDB6C2007587A2 /* Extensions.swift */; };
+		8857D49D23FDB6C2007587A2 /* Email.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8857D49A23FDB6C2007587A2 /* Email.swift */; };
+		8857D4A323FDB6CC007587A2 /* VisualiserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8857D49F23FDB6CC007587A2 /* VisualiserViewController.swift */; };
+		8857D4A423FDB6CC007587A2 /* ControlsOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8857D4A023FDB6CC007587A2 /* ControlsOverlay.swift */; };
+		8857D4A523FDB6CC007587A2 /* GenericOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8857D4A123FDB6CC007587A2 /* GenericOverlay.swift */; };
+		8857D4A623FDB6CC007587A2 /* WorkoutAnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8857D4A223FDB6CC007587A2 /* WorkoutAnimationViewController.swift */; };
+		8857D4A823FDB6D8007587A2 /* Visualiser.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8857D4A723FDB6D8007587A2 /* Visualiser.xcassets */; };
+		8857D4AA23FDB6EE007587A2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8857D4A923FDB6EE007587A2 /* GoogleService-Info.plist */; };
+		8857D4B923FDB756007587A2 /* config_5_leg_leftAnkle_leftThigh.js in Resources */ = {isa = PBXBuildFile; fileRef = 8857D4AC23FDB756007587A2 /* config_5_leg_leftAnkle_leftThigh.js */; };
+		8857D4BA23FDB756007587A2 /* config_5_upper_body.js in Resources */ = {isa = PBXBuildFile; fileRef = 8857D4AD23FDB756007587A2 /* config_5_upper_body.js */; };
+		8857D4BB23FDB756007587A2 /* config_1_chest.js in Resources */ = {isa = PBXBuildFile; fileRef = 8857D4AE23FDB756007587A2 /* config_1_chest.js */; };
+		8857D4BC23FDB756007587A2 /* config_6_upper_body.js in Resources */ = {isa = PBXBuildFile; fileRef = 8857D4AF23FDB756007587A2 /* config_6_upper_body.js */; };
+		8857D4BD23FDB756007587A2 /* config_5_leg_rightAnkle_leftThigh.js in Resources */ = {isa = PBXBuildFile; fileRef = 8857D4B023FDB756007587A2 /* config_5_leg_rightAnkle_leftThigh.js */; };
+		8857D4BE23FDB756007587A2 /* config_11_full_body.js in Resources */ = {isa = PBXBuildFile; fileRef = 8857D4B123FDB756007587A2 /* config_11_full_body.js */; };
+		8857D4BF23FDB756007587A2 /* config_1_chest.json in Resources */ = {isa = PBXBuildFile; fileRef = 8857D4B223FDB756007587A2 /* config_1_chest.json */; };
+		8857D4C023FDB756007587A2 /* ConfigurationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8857D4B323FDB756007587A2 /* ConfigurationType.swift */; };
+		8857D4C123FDB756007587A2 /* config_5_lower_right_leg.js in Resources */ = {isa = PBXBuildFile; fileRef = 8857D4B423FDB756007587A2 /* config_5_lower_right_leg.js */; };
+		8857D4C223FDB756007587A2 /* config_5_lower_body.js in Resources */ = {isa = PBXBuildFile; fileRef = 8857D4B523FDB756007587A2 /* config_5_lower_body.js */; };
+		8857D4C323FDB756007587A2 /* config_2_right_arm.js in Resources */ = {isa = PBXBuildFile; fileRef = 8857D4B623FDB756007587A2 /* config_2_right_arm.js */; };
+		8857D4C423FDB756007587A2 /* config_3_right_arm.js in Resources */ = {isa = PBXBuildFile; fileRef = 8857D4B723FDB756007587A2 /* config_3_right_arm.js */; };
+		8857D4C523FDB756007587A2 /* config_6_lower_body.js in Resources */ = {isa = PBXBuildFile; fileRef = 8857D4B823FDB756007587A2 /* config_6_lower_body.js */; };
+		8857D4CF23FDB762007587A2 /* Peripheral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8857D4C723FDB762007587A2 /* Peripheral.swift */; };
+		8857D4D023FDB762007587A2 /* VisualizerDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8857D4C823FDB762007587A2 /* VisualizerDataModel.swift */; };
+		8857D4D123FDB762007587A2 /* SensorLinearInterpolation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8857D4C923FDB762007587A2 /* SensorLinearInterpolation.swift */; };
+		8857D4D223FDB762007587A2 /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8857D4CA23FDB762007587A2 /* UIHelper.swift */; };
+		8857D4D323FDB762007587A2 /* LinearInterpolation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8857D4CB23FDB762007587A2 /* LinearInterpolation.swift */; };
+		8857D4D423FDB762007587A2 /* PeripheralTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8857D4CC23FDB762007587A2 /* PeripheralTableViewCell.swift */; };
+		8857D4D523FDB762007587A2 /* emgPeripheralModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8857D4CD23FDB762007587A2 /* emgPeripheralModel.swift */; };
+		8857D4D623FDB762007587A2 /* BluetoothPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8857D4CE23FDB762007587A2 /* BluetoothPreferences.swift */; };
+		8857D4D923FDB76C007587A2 /* FireViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8857D4D823FDB76C007587A2 /* FireViewController.swift */; };
+		8857D4DC23FDB782007587A2 /* StartUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8857D4DB23FDB782007587A2 /* StartUpViewController.swift */; };
+		8857D4E223FDB863007587A2 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 8857D4E123FDB863007587A2 /* Podfile */; };
 		886E6FC623CD01D1005E0DEA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886E6FC523CD01D1005E0DEA /* AppDelegate.swift */; };
 		886E6FC823CD01D1005E0DEA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886E6FC723CD01D1005E0DEA /* SceneDelegate.swift */; };
-		886E6FCA23CD01D1005E0DEA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886E6FC923CD01D1005E0DEA /* ViewController.swift */; };
 		886E6FCD23CD01D1005E0DEA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 886E6FCB23CD01D1005E0DEA /* Main.storyboard */; };
 		886E6FCF23CD01D4005E0DEA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 886E6FCE23CD01D4005E0DEA /* Assets.xcassets */; };
 		886E6FD223CD01D4005E0DEA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 886E6FD023CD01D4005E0DEA /* LaunchScreen.storyboard */; };
 		886E6FDD23CD01D4005E0DEA /* TorqueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886E6FDC23CD01D4005E0DEA /* TorqueTests.swift */; };
 		886E6FE823CD01D4005E0DEA /* TorqueUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886E6FE723CD01D4005E0DEA /* TorqueUITests.swift */; };
+		91342234422EF455E558A3FF /* Pods_Torque.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 768175CA41586B3D7AE24134 /* Pods_Torque.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,10 +76,51 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		768175CA41586B3D7AE24134 /* Pods_Torque.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Torque.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8857D48723FDB6AE007587A2 /* SensorBodyAttachmentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SensorBodyAttachmentViewController.swift; sourceTree = "<group>"; };
+		8857D48823FDB6AE007587A2 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		8857D48923FDB6AE007587A2 /* MVCLateralViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MVCLateralViewController.swift; sourceTree = "<group>"; };
+		8857D48A23FDB6AE007587A2 /* SensoryTypeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SensoryTypeViewController.swift; sourceTree = "<group>"; };
+		8857D48B23FDB6AE007587A2 /* PeripheralsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeripheralsViewController.swift; sourceTree = "<group>"; };
+		8857D48C23FDB6AE007587A2 /* MVCAnteriorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MVCAnteriorViewController.swift; sourceTree = "<group>"; };
+		8857D48D23FDB6AE007587A2 /* OrgViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrgViewController.swift; sourceTree = "<group>"; };
+		8857D48E23FDB6AE007587A2 /* MVCPosterioViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MVCPosterioViewController.swift; sourceTree = "<group>"; };
+		8857D49823FDB6C2007587A2 /* emgHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = emgHelper.swift; sourceTree = "<group>"; };
+		8857D49923FDB6C2007587A2 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		8857D49A23FDB6C2007587A2 /* Email.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Email.swift; sourceTree = "<group>"; };
+		8857D49F23FDB6CC007587A2 /* VisualiserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisualiserViewController.swift; sourceTree = "<group>"; };
+		8857D4A023FDB6CC007587A2 /* ControlsOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ControlsOverlay.swift; sourceTree = "<group>"; };
+		8857D4A123FDB6CC007587A2 /* GenericOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericOverlay.swift; sourceTree = "<group>"; };
+		8857D4A223FDB6CC007587A2 /* WorkoutAnimationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutAnimationViewController.swift; sourceTree = "<group>"; };
+		8857D4A723FDB6D8007587A2 /* Visualiser.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Visualiser.xcassets; sourceTree = "<group>"; };
+		8857D4A923FDB6EE007587A2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		8857D4AC23FDB756007587A2 /* config_5_leg_leftAnkle_leftThigh.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = config_5_leg_leftAnkle_leftThigh.js; sourceTree = "<group>"; };
+		8857D4AD23FDB756007587A2 /* config_5_upper_body.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = config_5_upper_body.js; sourceTree = "<group>"; };
+		8857D4AE23FDB756007587A2 /* config_1_chest.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = config_1_chest.js; sourceTree = "<group>"; };
+		8857D4AF23FDB756007587A2 /* config_6_upper_body.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = config_6_upper_body.js; sourceTree = "<group>"; };
+		8857D4B023FDB756007587A2 /* config_5_leg_rightAnkle_leftThigh.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = config_5_leg_rightAnkle_leftThigh.js; sourceTree = "<group>"; };
+		8857D4B123FDB756007587A2 /* config_11_full_body.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = config_11_full_body.js; sourceTree = "<group>"; };
+		8857D4B223FDB756007587A2 /* config_1_chest.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = config_1_chest.json; sourceTree = "<group>"; };
+		8857D4B323FDB756007587A2 /* ConfigurationType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationType.swift; sourceTree = "<group>"; };
+		8857D4B423FDB756007587A2 /* config_5_lower_right_leg.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = config_5_lower_right_leg.js; sourceTree = "<group>"; };
+		8857D4B523FDB756007587A2 /* config_5_lower_body.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = config_5_lower_body.js; sourceTree = "<group>"; };
+		8857D4B623FDB756007587A2 /* config_2_right_arm.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = config_2_right_arm.js; sourceTree = "<group>"; };
+		8857D4B723FDB756007587A2 /* config_3_right_arm.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = config_3_right_arm.js; sourceTree = "<group>"; };
+		8857D4B823FDB756007587A2 /* config_6_lower_body.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = config_6_lower_body.js; sourceTree = "<group>"; };
+		8857D4C723FDB762007587A2 /* Peripheral.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Peripheral.swift; sourceTree = "<group>"; };
+		8857D4C823FDB762007587A2 /* VisualizerDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisualizerDataModel.swift; sourceTree = "<group>"; };
+		8857D4C923FDB762007587A2 /* SensorLinearInterpolation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SensorLinearInterpolation.swift; sourceTree = "<group>"; };
+		8857D4CA23FDB762007587A2 /* UIHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
+		8857D4CB23FDB762007587A2 /* LinearInterpolation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinearInterpolation.swift; sourceTree = "<group>"; };
+		8857D4CC23FDB762007587A2 /* PeripheralTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeripheralTableViewCell.swift; sourceTree = "<group>"; };
+		8857D4CD23FDB762007587A2 /* emgPeripheralModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = emgPeripheralModel.swift; sourceTree = "<group>"; };
+		8857D4CE23FDB762007587A2 /* BluetoothPreferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BluetoothPreferences.swift; sourceTree = "<group>"; };
+		8857D4D823FDB76C007587A2 /* FireViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FireViewController.swift; sourceTree = "<group>"; };
+		8857D4DB23FDB782007587A2 /* StartUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartUpViewController.swift; sourceTree = "<group>"; };
+		8857D4E123FDB863007587A2 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
 		886E6FC223CD01D1005E0DEA /* Torque.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Torque.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		886E6FC523CD01D1005E0DEA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		886E6FC723CD01D1005E0DEA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		886E6FC923CD01D1005E0DEA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		886E6FCC23CD01D1005E0DEA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		886E6FCE23CD01D4005E0DEA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		886E6FD123CD01D4005E0DEA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -49,6 +131,8 @@
 		886E6FE323CD01D4005E0DEA /* TorqueUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TorqueUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		886E6FE723CD01D4005E0DEA /* TorqueUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TorqueUITests.swift; sourceTree = "<group>"; };
 		886E6FE923CD01D4005E0DEA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9CDC3D921AC0F0278FE117ED /* Pods-Torque.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Torque.debug.xcconfig"; path = "Target Support Files/Pods-Torque/Pods-Torque.debug.xcconfig"; sourceTree = "<group>"; };
+		EC3235052421D4D05C9D8939 /* Pods-Torque.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Torque.release.xcconfig"; path = "Target Support Files/Pods-Torque/Pods-Torque.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +140,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				91342234422EF455E558A3FF /* Pods_Torque.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,6 +161,101 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0AF72064F733682F44C4B701 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				768175CA41586B3D7AE24134 /* Pods_Torque.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8857D48623FDB6AE007587A2 /* VIews */ = {
+			isa = PBXGroup;
+			children = (
+				8857D48723FDB6AE007587A2 /* SensorBodyAttachmentViewController.swift */,
+				8857D48823FDB6AE007587A2 /* ViewController.swift */,
+				8857D48923FDB6AE007587A2 /* MVCLateralViewController.swift */,
+				8857D48A23FDB6AE007587A2 /* SensoryTypeViewController.swift */,
+				8857D48B23FDB6AE007587A2 /* PeripheralsViewController.swift */,
+				8857D48C23FDB6AE007587A2 /* MVCAnteriorViewController.swift */,
+				8857D48D23FDB6AE007587A2 /* OrgViewController.swift */,
+				8857D48E23FDB6AE007587A2 /* MVCPosterioViewController.swift */,
+			);
+			path = VIews;
+			sourceTree = "<group>";
+		};
+		8857D49723FDB6C2007587A2 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				8857D49823FDB6C2007587A2 /* emgHelper.swift */,
+				8857D49923FDB6C2007587A2 /* Extensions.swift */,
+				8857D49A23FDB6C2007587A2 /* Email.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		8857D49E23FDB6CC007587A2 /* Visualisation */ = {
+			isa = PBXGroup;
+			children = (
+				8857D49F23FDB6CC007587A2 /* VisualiserViewController.swift */,
+				8857D4A023FDB6CC007587A2 /* ControlsOverlay.swift */,
+				8857D4A123FDB6CC007587A2 /* GenericOverlay.swift */,
+				8857D4A223FDB6CC007587A2 /* WorkoutAnimationViewController.swift */,
+			);
+			path = Visualisation;
+			sourceTree = "<group>";
+		};
+		8857D4AB23FDB756007587A2 /* Configurations */ = {
+			isa = PBXGroup;
+			children = (
+				8857D4AC23FDB756007587A2 /* config_5_leg_leftAnkle_leftThigh.js */,
+				8857D4AD23FDB756007587A2 /* config_5_upper_body.js */,
+				8857D4AE23FDB756007587A2 /* config_1_chest.js */,
+				8857D4AF23FDB756007587A2 /* config_6_upper_body.js */,
+				8857D4B023FDB756007587A2 /* config_5_leg_rightAnkle_leftThigh.js */,
+				8857D4B123FDB756007587A2 /* config_11_full_body.js */,
+				8857D4B223FDB756007587A2 /* config_1_chest.json */,
+				8857D4B323FDB756007587A2 /* ConfigurationType.swift */,
+				8857D4B423FDB756007587A2 /* config_5_lower_right_leg.js */,
+				8857D4B523FDB756007587A2 /* config_5_lower_body.js */,
+				8857D4B623FDB756007587A2 /* config_2_right_arm.js */,
+				8857D4B723FDB756007587A2 /* config_3_right_arm.js */,
+				8857D4B823FDB756007587A2 /* config_6_lower_body.js */,
+			);
+			path = Configurations;
+			sourceTree = "<group>";
+		};
+		8857D4C623FDB762007587A2 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8857D4C723FDB762007587A2 /* Peripheral.swift */,
+				8857D4C823FDB762007587A2 /* VisualizerDataModel.swift */,
+				8857D4C923FDB762007587A2 /* SensorLinearInterpolation.swift */,
+				8857D4CA23FDB762007587A2 /* UIHelper.swift */,
+				8857D4CB23FDB762007587A2 /* LinearInterpolation.swift */,
+				8857D4CC23FDB762007587A2 /* PeripheralTableViewCell.swift */,
+				8857D4CD23FDB762007587A2 /* emgPeripheralModel.swift */,
+				8857D4CE23FDB762007587A2 /* BluetoothPreferences.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		8857D4D723FDB76C007587A2 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				8857D4D823FDB76C007587A2 /* FireViewController.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		8857D4DA23FDB782007587A2 /* SignupSignIn */ = {
+			isa = PBXGroup;
+			children = (
+				8857D4DB23FDB782007587A2 /* StartUpViewController.swift */,
+			);
+			path = SignupSignIn;
+			sourceTree = "<group>";
+		};
 		886E6FB923CD01D1005E0DEA = {
 			isa = PBXGroup;
 			children = (
@@ -83,6 +263,9 @@
 				886E6FDB23CD01D4005E0DEA /* TorqueTests */,
 				886E6FE623CD01D4005E0DEA /* TorqueUITests */,
 				886E6FC323CD01D1005E0DEA /* Products */,
+				8857D4E123FDB863007587A2 /* Podfile */,
+				CA2310476B3A00039F2B0264 /* Pods */,
+				0AF72064F733682F44C4B701 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,12 +282,20 @@
 		886E6FC423CD01D1005E0DEA /* Torque */ = {
 			isa = PBXGroup;
 			children = (
+				8857D4DA23FDB782007587A2 /* SignupSignIn */,
+				8857D4D723FDB76C007587A2 /* Network */,
+				8857D4C623FDB762007587A2 /* Models */,
+				8857D4AB23FDB756007587A2 /* Configurations */,
+				8857D49E23FDB6CC007587A2 /* Visualisation */,
+				8857D49723FDB6C2007587A2 /* Utilities */,
+				8857D48623FDB6AE007587A2 /* VIews */,
 				886E6FC523CD01D1005E0DEA /* AppDelegate.swift */,
 				886E6FC723CD01D1005E0DEA /* SceneDelegate.swift */,
-				886E6FC923CD01D1005E0DEA /* ViewController.swift */,
 				886E6FCB23CD01D1005E0DEA /* Main.storyboard */,
 				886E6FCE23CD01D4005E0DEA /* Assets.xcassets */,
+				8857D4A723FDB6D8007587A2 /* Visualiser.xcassets */,
 				886E6FD023CD01D4005E0DEA /* LaunchScreen.storyboard */,
+				8857D4A923FDB6EE007587A2 /* GoogleService-Info.plist */,
 				886E6FD323CD01D4005E0DEA /* Info.plist */,
 			);
 			path = Torque;
@@ -128,6 +319,15 @@
 			path = TorqueUITests;
 			sourceTree = "<group>";
 		};
+		CA2310476B3A00039F2B0264 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9CDC3D921AC0F0278FE117ED /* Pods-Torque.debug.xcconfig */,
+				EC3235052421D4D05C9D8939 /* Pods-Torque.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -135,9 +335,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 886E6FEC23CD01D4005E0DEA /* Build configuration list for PBXNativeTarget "Torque" */;
 			buildPhases = (
+				172DCCA574860460A869E28B /* [CP] Check Pods Manifest.lock */,
 				886E6FBE23CD01D1005E0DEA /* Sources */,
 				886E6FBF23CD01D1005E0DEA /* Frameworks */,
 				886E6FC023CD01D1005E0DEA /* Resources */,
+				F36893FB18EF78A59CE3D078 /* [CP] Embed Pods Frameworks */,
+				E4427D69EFB75ADB1BEE596F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -232,9 +435,24 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8857D4BB23FDB756007587A2 /* config_1_chest.js in Resources */,
+				8857D4C523FDB756007587A2 /* config_6_lower_body.js in Resources */,
 				886E6FD223CD01D4005E0DEA /* LaunchScreen.storyboard in Resources */,
+				8857D4BE23FDB756007587A2 /* config_11_full_body.js in Resources */,
+				8857D4C323FDB756007587A2 /* config_2_right_arm.js in Resources */,
+				8857D4C423FDB756007587A2 /* config_3_right_arm.js in Resources */,
+				8857D4E223FDB863007587A2 /* Podfile in Resources */,
+				8857D4BC23FDB756007587A2 /* config_6_upper_body.js in Resources */,
+				8857D4C223FDB756007587A2 /* config_5_lower_body.js in Resources */,
 				886E6FCF23CD01D4005E0DEA /* Assets.xcassets in Resources */,
+				8857D4B923FDB756007587A2 /* config_5_leg_leftAnkle_leftThigh.js in Resources */,
+				8857D4AA23FDB6EE007587A2 /* GoogleService-Info.plist in Resources */,
+				8857D4BD23FDB756007587A2 /* config_5_leg_rightAnkle_leftThigh.js in Resources */,
+				8857D4A823FDB6D8007587A2 /* Visualiser.xcassets in Resources */,
+				8857D4BA23FDB756007587A2 /* config_5_upper_body.js in Resources */,
 				886E6FCD23CD01D1005E0DEA /* Main.storyboard in Resources */,
+				8857D4C123FDB756007587A2 /* config_5_lower_right_leg.js in Resources */,
+				8857D4BF23FDB756007587A2 /* config_1_chest.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -254,14 +472,98 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		172DCCA574860460A869E28B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Torque-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E4427D69EFB75ADB1BEE596F /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Torque/Pods-Torque-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Torque/Pods-Torque-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Torque/Pods-Torque-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F36893FB18EF78A59CE3D078 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Torque/Pods-Torque-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Torque/Pods-Torque-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Torque/Pods-Torque-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		886E6FBE23CD01D1005E0DEA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				886E6FCA23CD01D1005E0DEA /* ViewController.swift in Sources */,
+				8857D49423FDB6AE007587A2 /* MVCAnteriorViewController.swift in Sources */,
+				8857D49523FDB6AE007587A2 /* OrgViewController.swift in Sources */,
+				8857D4DC23FDB782007587A2 /* StartUpViewController.swift in Sources */,
+				8857D49323FDB6AE007587A2 /* PeripheralsViewController.swift in Sources */,
+				8857D4C023FDB756007587A2 /* ConfigurationType.swift in Sources */,
+				8857D4A323FDB6CC007587A2 /* VisualiserViewController.swift in Sources */,
+				8857D4D523FDB762007587A2 /* emgPeripheralModel.swift in Sources */,
+				8857D4D223FDB762007587A2 /* UIHelper.swift in Sources */,
+				8857D4D023FDB762007587A2 /* VisualizerDataModel.swift in Sources */,
+				8857D49023FDB6AE007587A2 /* ViewController.swift in Sources */,
+				8857D4A423FDB6CC007587A2 /* ControlsOverlay.swift in Sources */,
+				8857D49223FDB6AE007587A2 /* SensoryTypeViewController.swift in Sources */,
+				8857D4D623FDB762007587A2 /* BluetoothPreferences.swift in Sources */,
 				886E6FC623CD01D1005E0DEA /* AppDelegate.swift in Sources */,
+				8857D4A623FDB6CC007587A2 /* WorkoutAnimationViewController.swift in Sources */,
+				8857D49123FDB6AE007587A2 /* MVCLateralViewController.swift in Sources */,
+				8857D49D23FDB6C2007587A2 /* Email.swift in Sources */,
+				8857D49C23FDB6C2007587A2 /* Extensions.swift in Sources */,
+				8857D4A523FDB6CC007587A2 /* GenericOverlay.swift in Sources */,
+				8857D4CF23FDB762007587A2 /* Peripheral.swift in Sources */,
+				8857D4D423FDB762007587A2 /* PeripheralTableViewCell.swift in Sources */,
 				886E6FC823CD01D1005E0DEA /* SceneDelegate.swift in Sources */,
+				8857D49623FDB6AE007587A2 /* MVCPosterioViewController.swift in Sources */,
+				8857D48F23FDB6AE007587A2 /* SensorBodyAttachmentViewController.swift in Sources */,
+				8857D4D923FDB76C007587A2 /* FireViewController.swift in Sources */,
+				8857D49B23FDB6C2007587A2 /* emgHelper.swift in Sources */,
+				8857D4D123FDB762007587A2 /* SensorLinearInterpolation.swift in Sources */,
+				8857D4D323FDB762007587A2 /* LinearInterpolation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -432,10 +734,11 @@
 		};
 		886E6FED23CD01D4005E0DEA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9CDC3D921AC0F0278FE117ED /* Pods-Torque.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 77PZNJDUQL;
+				DEVELOPMENT_TEAM = 8Z38QN3Q9Y;
 				INFOPLIST_FILE = Torque/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -450,10 +753,11 @@
 		};
 		886E6FEE23CD01D4005E0DEA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EC3235052421D4D05C9D8939 /* Pods-Torque.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 77PZNJDUQL;
+				DEVELOPMENT_TEAM = 8Z38QN3Q9Y;
 				INFOPLIST_FILE = Torque/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
