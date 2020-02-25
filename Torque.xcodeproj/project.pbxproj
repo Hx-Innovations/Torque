@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8856FF33240431E40068BA46 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8856FF32240431E40068BA46 /* GoogleService-Info.plist */; };
 		8857D48F23FDB6AE007587A2 /* SensorBodyAttachmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8857D48723FDB6AE007587A2 /* SensorBodyAttachmentViewController.swift */; };
 		8857D49023FDB6AE007587A2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8857D48823FDB6AE007587A2 /* ViewController.swift */; };
 		8857D49123FDB6AE007587A2 /* MVCLateralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8857D48923FDB6AE007587A2 /* MVCLateralViewController.swift */; };
@@ -23,7 +24,6 @@
 		8857D4A523FDB6CC007587A2 /* GenericOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8857D4A123FDB6CC007587A2 /* GenericOverlay.swift */; };
 		8857D4A623FDB6CC007587A2 /* WorkoutAnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8857D4A223FDB6CC007587A2 /* WorkoutAnimationViewController.swift */; };
 		8857D4A823FDB6D8007587A2 /* Visualiser.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8857D4A723FDB6D8007587A2 /* Visualiser.xcassets */; };
-		8857D4AA23FDB6EE007587A2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8857D4A923FDB6EE007587A2 /* GoogleService-Info.plist */; };
 		8857D4B923FDB756007587A2 /* config_5_leg_leftAnkle_leftThigh.js in Resources */ = {isa = PBXBuildFile; fileRef = 8857D4AC23FDB756007587A2 /* config_5_leg_leftAnkle_leftThigh.js */; };
 		8857D4BA23FDB756007587A2 /* config_5_upper_body.js in Resources */ = {isa = PBXBuildFile; fileRef = 8857D4AD23FDB756007587A2 /* config_5_upper_body.js */; };
 		8857D4BB23FDB756007587A2 /* config_1_chest.js in Resources */ = {isa = PBXBuildFile; fileRef = 8857D4AE23FDB756007587A2 /* config_1_chest.js */; };
@@ -77,6 +77,7 @@
 
 /* Begin PBXFileReference section */
 		768175CA41586B3D7AE24134 /* Pods_Torque.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Torque.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8856FF32240431E40068BA46 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8857D48723FDB6AE007587A2 /* SensorBodyAttachmentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SensorBodyAttachmentViewController.swift; sourceTree = "<group>"; };
 		8857D48823FDB6AE007587A2 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		8857D48923FDB6AE007587A2 /* MVCLateralViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MVCLateralViewController.swift; sourceTree = "<group>"; };
@@ -93,7 +94,6 @@
 		8857D4A123FDB6CC007587A2 /* GenericOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericOverlay.swift; sourceTree = "<group>"; };
 		8857D4A223FDB6CC007587A2 /* WorkoutAnimationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutAnimationViewController.swift; sourceTree = "<group>"; };
 		8857D4A723FDB6D8007587A2 /* Visualiser.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Visualiser.xcassets; sourceTree = "<group>"; };
-		8857D4A923FDB6EE007587A2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8857D4AC23FDB756007587A2 /* config_5_leg_leftAnkle_leftThigh.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = config_5_leg_leftAnkle_leftThigh.js; sourceTree = "<group>"; };
 		8857D4AD23FDB756007587A2 /* config_5_upper_body.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = config_5_upper_body.js; sourceTree = "<group>"; };
 		8857D4AE23FDB756007587A2 /* config_1_chest.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = config_1_chest.js; sourceTree = "<group>"; };
@@ -117,7 +117,7 @@
 		8857D4CE23FDB762007587A2 /* BluetoothPreferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BluetoothPreferences.swift; sourceTree = "<group>"; };
 		8857D4D823FDB76C007587A2 /* FireViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FireViewController.swift; sourceTree = "<group>"; };
 		8857D4DB23FDB782007587A2 /* StartUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartUpViewController.swift; sourceTree = "<group>"; };
-		8857D4E123FDB863007587A2 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		8857D4E123FDB863007587A2 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		886E6FC223CD01D1005E0DEA /* Torque.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Torque.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		886E6FC523CD01D1005E0DEA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		886E6FC723CD01D1005E0DEA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -295,7 +295,7 @@
 				886E6FCE23CD01D4005E0DEA /* Assets.xcassets */,
 				8857D4A723FDB6D8007587A2 /* Visualiser.xcassets */,
 				886E6FD023CD01D4005E0DEA /* LaunchScreen.storyboard */,
-				8857D4A923FDB6EE007587A2 /* GoogleService-Info.plist */,
+				8856FF32240431E40068BA46 /* GoogleService-Info.plist */,
 				886E6FD323CD01D4005E0DEA /* Info.plist */,
 			);
 			path = Torque;
@@ -446,7 +446,7 @@
 				8857D4C223FDB756007587A2 /* config_5_lower_body.js in Resources */,
 				886E6FCF23CD01D4005E0DEA /* Assets.xcassets in Resources */,
 				8857D4B923FDB756007587A2 /* config_5_leg_leftAnkle_leftThigh.js in Resources */,
-				8857D4AA23FDB6EE007587A2 /* GoogleService-Info.plist in Resources */,
+				8856FF33240431E40068BA46 /* GoogleService-Info.plist in Resources */,
 				8857D4BD23FDB756007587A2 /* config_5_leg_rightAnkle_leftThigh.js in Resources */,
 				8857D4A823FDB6D8007587A2 /* Visualiser.xcassets in Resources */,
 				8857D4BA23FDB756007587A2 /* config_5_upper_body.js in Resources */,

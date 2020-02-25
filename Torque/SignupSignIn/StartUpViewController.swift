@@ -18,18 +18,22 @@ class StartUpViewController: UIViewController {
     var authUI: FUIAuth!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        print("current user", Auth.auth().currentUser?.uid)
         authUI = FUIAuth.defaultAuthUI()
         authUI?.delegate = self
-        // Do any additional setup after loading the view.
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+        
         if authUI.auth?.currentUser != nil {
             goToHomeScreen()
         } else {
             signIn()
         }
+        // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+       
     }
     
     @IBAction func getStartedClicked( _ sender: Any){
@@ -72,10 +76,17 @@ class StartUpViewController: UIViewController {
     }
     
     func goToHomeScreen() {
-        let appDelegate = UIApplication.shared.delegate as? AppDelegate
-        if let tabBarVC = self.storyboard?.instantiateViewController(withIdentifier: "MainController") as? UINavigationController {
-            appDelegate?.window?.rootViewController = tabBarVC
-        }
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let mainVC = storyboard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
+        let navigavtionController = UINavigationController(rootViewController: mainVC)
+        present(navigavtionController, animated: true, completion: nil)
+    
+        //self.view.window?.rootViewController =
+//        let appDelegate = UIApplication.shared.delegate as? AppDelegate
+//        if let tabBarVC = self.storyboard?.instantiateViewController(withIdentifier: "ViewController") as? UINavigationController {
+//            appDelegate?.window?.rootViewController = tabBarVC
+//        }
+ 
     }
 
     /*

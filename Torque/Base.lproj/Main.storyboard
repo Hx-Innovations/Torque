@@ -27,7 +27,7 @@
         <!--Notch Tutorial-->
         <scene sceneID="fta-AU-SlH">
             <objects>
-                <viewController title="Notch Tutorial" id="ciN-eo-ZzS" customClass="ViewController" customModule="Torque" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ViewController" title="Notch Tutorial" id="ciN-eo-ZzS" customClass="ViewController" customModule="Torque" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="w5b-dX-dPO"/>
                         <viewControllerLayoutGuide type="bottom" id="zTp-IV-Oia"/>
@@ -744,13 +744,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="qFr-Nb-yd1"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Organizations" id="1PD-5m-cEY">
-                        <barButtonItem key="rightBarButtonItem" image="ic_anonymous.png" id="GPs-el-1UE">
-                            <connections>
-                                <action selector="didTapLogoutButton:" destination="Zvz-k2-XEm" id="Ovq-z0-Qu1"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Organizations" id="1PD-5m-cEY"/>
                     <connections>
                         <outlet property="isisTable" destination="OZG-Og-QUf" id="GTt-ui-21n"/>
                     </connections>
@@ -1382,9 +1376,6 @@
                         <viewLayoutGuide key="safeArea" id="gOT-Kh-Xx5"/>
                     </view>
                     <navigationItem key="navigationItem" id="4V6-LV-xKw"/>
-                    <connections>
-                        <segue destination="AUg-vp-xl7" kind="show" id="m8k-9P-pwZ"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aeO-NQ-dZi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1424,7 +1415,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fcw-gr-ga1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1457" y="-321"/>
+            <point key="canvasLocation" x="-909" y="-321"/>
         </scene>
     </scenes>
     <resources>
@@ -1432,7 +1423,6 @@
         <image name="balance" width="732.5" height="1099"/>
         <image name="bluetooth_blue" width="16" height="16"/>
         <image name="c0001" width="429" height="402"/>
-        <image name="ic_anonymous.png" width="16" height="16"/>
         <image name="right lower leg configuration" width="265" height="645"/>
     </resources>
 </document>

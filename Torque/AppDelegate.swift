@@ -23,8 +23,39 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
        didFinishLaunchingWithOptions launchOptions:
         [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
        FirebaseApp.configure()
+        
+        goToHomeScreen()
        return true
      }
+    
+    func userAuth() {
+        if Auth.auth().currentUser != nil {
+                   goToHomeScreen()
+               } else {
+                   //signIn()
+               }
+    }
+    
+    func goToHomeScreen() {
+
+
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let mainVC = storyboard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
+        let navigavtionController = UINavigationController(rootViewController: mainVC)
+        
+        
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        self.window?.rootViewController = navigavtionController
+        self.window?.makeKeyAndVisible()
+         // present(navigavtionController, animated: true, completion: nil)
+           /*
+           let appDelegate = UIApplication.shared.delegate as? AppDelegate
+           if let tabBarVC = self.storyboard?.instantiateViewController(withIdentifier: "MainController") as? UINavigationController {
+               appDelegate?.window?.rootViewController = tabBarVC
+           }
+    */
+       }
+    
 }
 
 
