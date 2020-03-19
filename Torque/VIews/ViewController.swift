@@ -53,7 +53,7 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate {
     
     var htmlString = ""
 
-    
+
     private var selectedConfiguration: ConfigurationType = ConfigurationType.chest1 {
         didSet {
             selectedConfigurationLabel.text = selectedConfiguration.name
@@ -116,6 +116,11 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate {
             // pass the configuration object here
             visualizerVC?.sensorConfiguration = selectedConfiguration
             print("selected configuration, ", selectedConfiguration)
+        }
+        else if segue.identifier == "Organizations" {
+            let organizationsVC = segue.destination as? OrgViewController
+            
+            print("Orgs...")
         }
         let nav = segue.destination as? PeripheralsViewController
        // let vc = nav?.topViewController as? PeripheralsViewController
@@ -1285,6 +1290,7 @@ extension ViewController {
         mailComposeVC.setMessageBody(self.htmlString, isHTML: true)
         return mailComposeVC
     }
+    
     
     func prepareHTMLFromPlayerData(){
         var externalTorqueSum:Float = 0.00

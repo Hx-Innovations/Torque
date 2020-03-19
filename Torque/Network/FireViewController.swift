@@ -45,12 +45,61 @@ class FireViewController: UIViewController, UITableViewDelegate, UITableViewData
                   print("Error getting documents: \(err)")
               } else {
                   for document in querySnapshot!.documents {
-                      print("\(document.documentID) => \(document.data())")
+                      print("Here??? \(document.documentID) => \(document.data())")
                   }
               }
           }
           // [END get_collection]
       }
+    
+    func getOrganization() -> [String] {
+        var db: Firestore!
+        var organizationList:[String] = []
+        // [START setup]
+        let settings = FirestoreSettings()
+        Firestore.firestore().settings = settings
+               // [END setup]
+        db = Firestore.firestore()
+        // [START get_collection]
+        db.collection("organization").getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                for document in querySnapshot!.documents {
+                    let orgName = "(\(document.documentID) => \(document.data()))"
+                    organizationList.append(orgName)
+                }
+            }
+        }
+        // [END get_collection]
+        
+        return organizationList
+    }
+    
+    func getOrgs(_ completion: @escaping ([String]) -> Void){
+        var db: Firestore!
+        var organizationList:[String] = []
+        // [START setup]
+        let settings = FirestoreSettings()
+        Firestore.firestore().settings = settings
+               // [END setup]
+        db = Firestore.firestore()
+        // [START get_collection]
+        db.collection("organization").getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                for document in querySnapshot!.documents {
+                    print("Here???  2 \(document.documentID) => \(document.data())")
+                    let org = document.data() as? [String: String]
+                    let orgName = org?["name"] ?? ""
+                    print("Org name here", orgName)
+                    organizationList.append(orgName)
+                }
+                completion(organizationList)
+            }
+        }
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
             self.getCollection()

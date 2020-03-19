@@ -7,17 +7,15 @@
 //
 
 import UIKit
+import FirebaseFirestore
+
 
 class OrgViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 8
-    }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
-        cell.textLabel!.text = "hello"
-        return cell
-    }
+    var orgCount = 2
+    var orgText : [String] = ["hello", "hello2", "random", "another rand"]
+    var organization: [String] = []
+    var tableView = UITableView()
     
     @IBOutlet weak var isisTable: UITableView!
     override func viewDidLoad() {
@@ -26,10 +24,32 @@ class OrgViewController: UIViewController, UITableViewDataSource, UITableViewDel
         self.isisTable.dataSource = self
         self.isisTable.delegate = self
         
+        // collection organization names
+        getOrgData()
       
         // Do any additional setup after loading the view.
     }
    
+    func getOrgData() {
+        var s = FireViewController()
+        s.getOrgs {[weak self] (orgs) in
+            self?.orgText = orgs
+            self?.isisTable.reloadData()
+        }
+    }
+    
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return orgText.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = UITableViewCell()
+        print(orgText)
+        cell.textLabel!.text = orgText[indexPath.row]
+        return cell
+    }
 
 //    @IBAction func didTapLogoutButton(_ sender: UIBarButtonItem) {
 //
