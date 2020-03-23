@@ -101,6 +101,28 @@ class FireViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
+    func postTest(shoeId: String,_ completion: @escaping (String) -> Void){
+        var db: Firestore!
+        
+        let settings = FirestoreSettings()
+        Firestore.firestore().settings = settings
+        
+        db = Firestore.firestore()
+        
+        let testdata: [String : Any] = [
+            "comfort" : 98,
+            "fatigue" : 100,
+            "shoeId" : "TQLA8PVQuOBfzrxijdEh"
+        ]
+        db.collection("test").addDocument(data: testdata) { (err) in
+            if let err = err {
+                completion("error")
+            } else {
+                completion("successful upload")
+            }
+        }
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
             self.getCollection()
             return 4

@@ -40,7 +40,7 @@
                                 <rect key="frame" x="0.0" y="88" width="375" height="1278"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="QeP-3o-eDO">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1896"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1938"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Device List:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MjT-Wi-OWF">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="20.5"/>
@@ -455,7 +455,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="c26-jQ-vCI">
-                                                <rect key="frame" x="0.0" y="1290" width="375" height="606"/>
+                                                <rect key="frame" x="0.0" y="1290" width="375" height="648"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Capture EMG" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ouw-nE-glP">
                                                         <rect key="frame" x="0.0" y="0.0" width="108" height="40"/>
@@ -609,29 +609,24 @@
                                                             <action selector="actionVisualize" destination="ciN-eo-ZzS" eventType="touchUpInside" id="ozc-hZ-Hpc"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hNz-rf-M48">
-                                                        <rect key="frame" x="0.0" y="489" width="135" height="30"/>
-                                                        <color key="backgroundColor" red="0.0" green="0.6705882353" blue="0.81960784310000001" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="30" id="U9S-0s-RI2"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <inset key="contentEdgeInsets" minX="12" minY="0.0" maxX="12" maxY="0.0"/>
-                                                        <state key="normal" title="Show example">
-                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </state>
-                                                        <connections>
-                                                            <action selector="actionShowExample" destination="ciN-eo-ZzS" eventType="touchUpInside" id="bO5-GQ-UI9"/>
-                                                        </connections>
-                                                    </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lFg-ys-Ns2">
-                                                        <rect key="frame" x="0.0" y="531" width="127" height="30"/>
+                                                        <rect key="frame" x="0.0" y="489" width="127" height="30"/>
                                                         <color key="backgroundColor" red="0.080266483129999996" green="0.72267872099999997" blue="0.85492521519999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <state key="normal" title="  Export IMU CSV  ">
                                                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                                         </state>
                                                         <connections>
                                                             <action selector="exportIMU:" destination="ciN-eo-ZzS" eventType="touchUpInside" id="RkS-jo-7Uc"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lhH-tl-Td3">
+                                                        <rect key="frame" x="0.0" y="531" width="136" height="30"/>
+                                                        <color key="backgroundColor" red="0.080266483129999996" green="0.72267872099999997" blue="0.85492521519999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <state key="normal" title="Upload to Database">
+                                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="UploadDatbase:" destination="ciN-eo-ZzS" eventType="touchUpInside" id="xor-bC-sQD"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GtD-iy-4DW">
@@ -644,6 +639,21 @@
                                                         </state>
                                                         <connections>
                                                             <action selector="emailReport:" destination="ciN-eo-ZzS" eventType="touchUpInside" id="qKN-nY-S8k"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hNz-rf-M48">
+                                                        <rect key="frame" x="0.0" y="618" width="135" height="30"/>
+                                                        <color key="backgroundColor" red="0.0" green="0.6705882353" blue="0.81960784310000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="30" id="U9S-0s-RI2"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <inset key="contentEdgeInsets" minX="12" minY="0.0" maxX="12" maxY="0.0"/>
+                                                        <state key="normal" title="Show example">
+                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="actionShowExample" destination="ciN-eo-ZzS" eventType="touchUpInside" id="bO5-GQ-UI9"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>

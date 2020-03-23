@@ -1242,7 +1242,19 @@ extension ViewController: MVCDelegate, PosteriorMVCDelegate {
     }
     
 }
-
+// MARK: Upload Database
+extension ViewController {
+    @IBAction func UploadDatbase(_ sender: Any){
+        let s = FireViewController()
+        s.postTest(shoeId: "blah") { (response) in
+            if response == "error" {
+                self.showToast("upload error")
+            }else {
+                self.showToast("successful upload")
+            }
+        }
+    }
+}
 
 // MARK: Email Report
 extension ViewController {
