@@ -55,6 +55,7 @@
 		886E6FD223CD01D4005E0DEA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 886E6FD023CD01D4005E0DEA /* LaunchScreen.storyboard */; };
 		886E6FDD23CD01D4005E0DEA /* TorqueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886E6FDC23CD01D4005E0DEA /* TorqueTests.swift */; };
 		886E6FE823CD01D4005E0DEA /* TorqueUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886E6FE723CD01D4005E0DEA /* TorqueUITests.swift */; };
+		88DD5B14242A935100D14076 /* shoeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DD5B13242A935100D14076 /* shoeViewController.swift */; };
 		91342234422EF455E558A3FF /* Pods_Torque.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 768175CA41586B3D7AE24134 /* Pods_Torque.framework */; };
 /* End PBXBuildFile section */
 
@@ -77,7 +78,7 @@
 
 /* Begin PBXFileReference section */
 		768175CA41586B3D7AE24134 /* Pods_Torque.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Torque.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		8856FF32240431E40068BA46 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		8856FF32240431E40068BA46 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8857D48723FDB6AE007587A2 /* SensorBodyAttachmentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SensorBodyAttachmentViewController.swift; sourceTree = "<group>"; };
 		8857D48823FDB6AE007587A2 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		8857D48923FDB6AE007587A2 /* MVCLateralViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MVCLateralViewController.swift; sourceTree = "<group>"; };
@@ -131,6 +132,7 @@
 		886E6FE323CD01D4005E0DEA /* TorqueUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TorqueUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		886E6FE723CD01D4005E0DEA /* TorqueUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TorqueUITests.swift; sourceTree = "<group>"; };
 		886E6FE923CD01D4005E0DEA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		88DD5B13242A935100D14076 /* shoeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = shoeViewController.swift; sourceTree = "<group>"; };
 		9CDC3D921AC0F0278FE117ED /* Pods-Torque.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Torque.debug.xcconfig"; path = "Target Support Files/Pods-Torque/Pods-Torque.debug.xcconfig"; sourceTree = "<group>"; };
 		EC3235052421D4D05C9D8939 /* Pods-Torque.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Torque.release.xcconfig"; path = "Target Support Files/Pods-Torque/Pods-Torque.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -179,6 +181,7 @@
 				8857D48B23FDB6AE007587A2 /* PeripheralsViewController.swift */,
 				8857D48C23FDB6AE007587A2 /* MVCAnteriorViewController.swift */,
 				8857D48D23FDB6AE007587A2 /* OrgViewController.swift */,
+				88DD5B13242A935100D14076 /* shoeViewController.swift */,
 				8857D48E23FDB6AE007587A2 /* MVCPosterioViewController.swift */,
 			);
 			path = VIews;
@@ -537,6 +540,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8857D49423FDB6AE007587A2 /* MVCAnteriorViewController.swift in Sources */,
+				88DD5B14242A935100D14076 /* shoeViewController.swift in Sources */,
 				8857D49523FDB6AE007587A2 /* OrgViewController.swift in Sources */,
 				8857D4DC23FDB782007587A2 /* StartUpViewController.swift in Sources */,
 				8857D49323FDB6AE007587A2 /* PeripheralsViewController.swift in Sources */,
@@ -652,6 +656,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -712,6 +717,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
