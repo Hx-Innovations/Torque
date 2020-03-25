@@ -13,7 +13,7 @@ import FirebaseFirestore
 class OrgViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     var orgCount = 2
-    var orgText : [String] = ["hello", "hello2", "random", "another rand"]
+    var orgs : [[String: String]] = [["abcd": "hello", "efgh": "hello2"]]
     var organization: [String] = []
     var tableView = UITableView()
     
@@ -33,22 +33,30 @@ class OrgViewController: UIViewController, UITableViewDataSource, UITableViewDel
     func getOrgData() {
         var s = FireViewController()
         s.getOrgs {[weak self] (orgs) in
-            self?.orgText = orgs
+            self?.orgs = orgs
             self?.isisTable.reloadData()
         }
     }
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return orgText.count
+        return orgs.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = UITableViewCell()
-        print(orgText)
-        cell.textLabel!.text = orgText[indexPath.row]
+        print(orgs)
+        cell.textLabel!.text =  orgs[indexPath.row]["name"]
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let shoesVC = storyboard.instantiateViewController(identifier: "ShoeViewController") as! ShoeViewController
+        let orgId = orgs[indexPath.row]["orgId"] ?? ""
+        shoesVC.organizationId = orgId
+        self.navigationController?.pushViewController(shoesVC, animated: true)
     }
 
 //    @IBAction func didTapLogoutButton(_ sender: UIBarButtonItem) {

@@ -76,9 +76,9 @@ class FireViewController: UIViewController, UITableViewDelegate, UITableViewData
         return organizationList
     }
     
-    func getOrgs(_ completion: @escaping ([String]) -> Void){
+    func getOrgs(_ completion: @escaping ([[String: String]]) -> Void){
         var db: Firestore!
-        var organizationList:[String] = []
+        var organizationList:[[String: String]] = []
         // [START setup]
         let settings = FirestoreSettings()
         Firestore.firestore().settings = settings
@@ -94,25 +94,51 @@ class FireViewController: UIViewController, UITableViewDelegate, UITableViewData
                     let org = document.data() as? [String: String]
                     let orgName = org?["name"] ?? ""
                     print("Org name here", orgName)
-                    organizationList.append(orgName)
+                    organizationList.append(["orgId": document.documentID, "name": orgName])
                 }
                 completion(organizationList)
             }
         }
     }
     
-    func postTest(shoeId: String,_ completion: @escaping (String) -> Void){
+    func getShoes(organizationId: String, _ completion: @escaping ([[String: String]]) -> Void) {
+        var db: Firestore!
+        var organizationList:[[String: String]] = []
+        // [START setup]
+        let settings = FirestoreSettings()
+        Firestore.firestore().settings = settings
+               // [END setup]
+        db = Firestore.firestore()
+        // [START get_collection]
+        db.collection("shoes").whereField("organizationId", isEqualTo: organizationId).getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                for document in querySnapshot!.documents {
+                    print("Here???  2 \(document.documentID) => \(document.data())")
+                    let shoe = document.data() as? [String: String]
+                    let shoeName = shoe?["name"] ?? ""
+                    print("Org name here", shoeName)
+                    organizationList.append(["name": shoeName, "shoeId": document.documentID])
+                }
+                completion(organizationList)
+            }
+        }
+    }
+    
+    func postTest(shoeId: String, imuDictionary: [[String: Float]],_ completion: @escaping (String) -> Void){
         var db: Firestore!
         
         let settings = FirestoreSettings()
         Firestore.firestore().settings = settings
         
         db = Firestore.firestore()
-        
+        print("Dictionary...", imuDictionary)
         let testdata: [String : Any] = [
             "comfort" : 98,
             "fatigue" : 100,
-            "shoeId" : "TQLA8PVQuOBfzrxijdEh"
+            "shoeId" : "TQLA8PVQuOBfzrxijdEh",
+            "imuDictionary": imuDictionary
         ]
         db.collection("test").addDocument(data: testdata) { (err) in
             if let err = err {

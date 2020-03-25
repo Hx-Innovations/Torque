@@ -20,6 +20,7 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate {
     private let LICENSE_CODE = "x7XURbDfbQWKYOQE7kr3"
     
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var deviceLabel: UILabel!
     
     @IBOutlet weak var deviceListLabel: UILabel!
     @IBOutlet weak var networkLabel: UILabel!
@@ -41,6 +42,9 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate {
     var isStartClicked = false
     var sessionDictionary = [String:[Double]]()
     var emgData = EMGStruct()
+    
+    var shoeId: String = ""
+    var shoeName: String = "initial shoe"
     //var emgData.medGastroc = [Double]()  //Medial Gastro
    // var emgData.latGastroc = [Double]()  // 1 - Posterial Medial
     //var emgData.tibAnterior = [Double]()  // 2 - Tibilar Anterior
@@ -89,6 +93,7 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate {
         super.viewWillAppear(animated)
         print("view will appear")
         setupPeripherals()
+        self.deviceLabel.text = "Shoe Name: \(shoeName)"
         
     }
     
@@ -457,6 +462,8 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate {
                     csvText.append(contentsOf: "\n")
                 }
             }
+            
+            self.uploadTestDB(imuDictionary: imuDictionary)
             // clear IMU data
             imuDictionary = [[String:Float]]()
             
@@ -1246,7 +1253,18 @@ extension ViewController: MVCDelegate, PosteriorMVCDelegate {
 extension ViewController {
     @IBAction func UploadDatbase(_ sender: Any){
         let s = FireViewController()
-        s.postTest(shoeId: "blah") { (response) in
+        s.postTest(shoeId: shoeId, imuDictionary: imuDictionary ?? []) { (response) in
+            if response == "error" {
+                self.showToast("upload error")
+            }else {
+                self.showToast("successful upload")
+            }
+        }
+    }
+    
+    func uploadTestDB(imuDictionary: [[String : Float]]?){
+        let s = FireViewController()
+        s.postTest(shoeId: shoeId, imuDictionary: imuDictionary ?? []) { (response) in
             if response == "error" {
                 self.showToast("upload error")
             }else {
