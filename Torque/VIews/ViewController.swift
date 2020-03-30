@@ -11,6 +11,7 @@ import WearnotchSDK
 import CoreBluetooth
 import MessageUI
 import Accelerate
+import Firebase
 
 
 
@@ -50,7 +51,7 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate {
     //var emgData.tibAnterior = [Double]()  // 2 - Tibilar Anterior
     //var emgData.peroneals = [Double]()  // 3- Peroneals
     var emgDataArray = [0.0,0.0,0.0,0.0]
-    var imuDictionary: [[String : Float]]? = []
+    var imuDictionary: [[String : Float]]? = [["test":9.089],["nameTwo":9.898]]
     var blueToothPeripheralsDelegate: BluetoothControllerDelegate?
     var MVCDict: [String:Double] = [:]
     var captureTimeConfiguration = 30
@@ -463,7 +464,10 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate {
                 }
             }
             
-            self.uploadTestDB(imuDictionary: imuDictionary)
+            //upload entire csv file
+            //self.uploadTestDB(imuDictionary: imuDictionary)
+            self.uploadCSVFile(path: path! as NSURL)
+        
             // clear IMU data
             imuDictionary = [[String:Float]]()
             
@@ -1266,11 +1270,64 @@ extension ViewController {
         let s = FireViewController()
         s.postTest(shoeId: shoeId, imuDictionary: imuDictionary ?? []) { (response) in
             if response == "error" {
-                self.showToast("upload error")
+                self.showToast("upload error \(response)")
             }else {
-                self.showToast("successful upload")
+                self.showToast("successful upload \(response)")
             }
         }
+    }
+    
+    func uploadCSVFile(path: NSURL){
+        let storage = Storage.storage()
+        
+        // Create a root reference
+        let storageRef = storage.reference()
+        
+        let localFile = path
+        
+        //meta data
+        let newMetaData = StorageMetadata()
+        
+        
+        if self.shoeId.isEmpty {
+            newMetaData.customMetadata = ["shoeId":"None"]
+            newMetaData.customMetadata = ["shoeName": "None"]
+        }else {
+            newMetaData.customMetadata = ["shoeId": self.shoeId]
+            newMetaData.customMetadata = ["shoeName": self.shoeName]
+        }
+        
+        let time = getTime()
+        // Create a reference to "mountains.jpg"
+        let equivalencyTest = storageRef.child("test/\(shoeName ?? "None")-\(time)")
+        
+        
+        
+      // Upload the file to the path "images/rivers.jpg"
+        DispatchQueue.main.async {
+            let uploadTask = equivalencyTest.putFile(from: localFile as URL, metadata: newMetaData) { metadata, error in
+              guard let metadata = metadata else {
+                // Uh-oh, an error occurred!
+                  
+                  print("error upload file to storage folder \(error)")
+                return
+              }
+              // Metadata contains file metadata such as size, content-type.
+              let size = metadata.size
+              // You can also access to download URL after upload.
+              equivalencyTest.downloadURL { (url, error) in
+                guard let downloadURL = url else {
+                  // Uh-oh, an error occurred!
+                  print("download link, \(url)")
+                  return
+                }
+              }
+            }
+        }
+        
+        
+
+
     }
 }
 

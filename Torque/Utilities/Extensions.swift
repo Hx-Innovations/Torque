@@ -102,4 +102,15 @@ protocol BluetoothControllerDelegate {
     func didAddPeripherals(array: [Peripheral]?, btmanager: CBCentralManager?)
 }
 
+func getTime() -> String {
+    let unixtimeInterval = Date().timeIntervalSince1970 
+    let date = Date(timeIntervalSince1970: unixtimeInterval)
+    let dateFormatter = DateFormatter()
+    dateFormatter.timeZone = TimeZone(abbreviation: "EST") //Set timezone that you want
+    dateFormatter.locale = NSLocale.current
+    dateFormatter.dateFormat = "yyyy-MM-dd HH:mm" //Specify your format that you want
+    let strDate = dateFormatter.string(from: date)
+    return strDate
+}
+
 
