@@ -16,10 +16,12 @@ class OrgViewController: UIViewController, UITableViewDataSource, UITableViewDel
     var orgs : [[String: String]] = [["abcd": "hello", "efgh": "hello2"]]
     var organization: [String] = []
     var tableView = UITableView()
+    let s = FireViewController()
     
     @IBOutlet weak var isisTable: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupPlusButton()
         
         self.isisTable.dataSource = self
         self.isisTable.delegate = self
@@ -31,12 +33,49 @@ class OrgViewController: UIViewController, UITableViewDataSource, UITableViewDel
     }
    
     func getOrgData() {
-        var s = FireViewController()
         s.getOrgs {[weak self] (orgs) in
             self?.orgs = orgs
             self?.isisTable.reloadData()
         }
     }
+    
+    func setupPlusButton() {
+        let image = UIImage(systemName: "plus")
+        let barButtonItem = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(didTapAddOrgButton))
+        self.navigationItem.rightBarButtonItem = barButtonItem
+    }
+    
+    @objc func didTapAddOrgButton(_ sender: UIBarButtonItem) {
+           // Add alert controller
+           let alertController = UIAlertController(title: AllertActionTitles.AddNewTeam, message: nil, preferredStyle: .alert)
+           alertController.addTextField(configurationHandler: { textfield in
+               textfield.placeholder = AllertActionTitles.NewTeamsName
+               textfield.autocapitalizationType = .words
+               textfield.keyboardType = .asciiCapable
+               
+               // textfield.addTarget(self, action: #selector(self.textChangedInAlertController(_:)), for: .editingChanged)
+           })
+           let addOrgAction = UIAlertAction(title: "Add", style: .default) {[weak self] (action) in
+               guard let orgName = alertController.textFields?[0].text else { return }
+           
+               if orgName.count < 1 { return }
+               
+               self?.s.addOrg(name: orgName) { addedShoe, error in
+                   
+                   if let addedShoe = addedShoe,  error == nil {
+                       self?.orgs.append(addedShoe)
+                       self?.isisTable.reloadData()
+                   } else {
+                       print("Something went wrong")
+                   }
+               }
+           }
+           let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+           alertController.addAction(addOrgAction)
+           alertController.addAction(cancelAction)
+           present(alertController, animated: true)
+       }
+    
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

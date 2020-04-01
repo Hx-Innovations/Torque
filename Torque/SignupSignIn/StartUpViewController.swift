@@ -11,7 +11,7 @@ import UIKit
 import Firebase
 import FirebaseAuth
 import FirebaseUI
-import GoogleSignIn
+//import GoogleSignIn
 
 class StartUpViewController: UIViewController {
 
@@ -79,7 +79,8 @@ class StartUpViewController: UIViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let mainVC = storyboard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
         let navigavtionController = UINavigationController(rootViewController: mainVC)
-        present(navigavtionController, animated: true, completion: nil)
+        self.navigationController?.pushViewController(mainVC, animated: true)
+        //present(navigavtionController, animated: true, completion: nil)
     
         //self.view.window?.rootViewController =
 //        let appDelegate = UIApplication.shared.delegate as? AppDelegate
