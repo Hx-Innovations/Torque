@@ -68,9 +68,9 @@ class ShoeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     @objc func didTapAddShoeButton(_ sender: UIBarButtonItem) {
         // Add alert controller
-        let alertController = UIAlertController(title: AllertActionTitles.AddNewTeam, message: nil, preferredStyle: .alert)
+        let alertController = UIAlertController(title: AllertActionTitles.AddNewShoe, message: nil, preferredStyle: .alert)
         alertController.addTextField(configurationHandler: { textfield in
-            textfield.placeholder = AllertActionTitles.NewTeamsName
+            textfield.placeholder = AllertActionTitles.NewShoeName
             textfield.autocapitalizationType = .words
             textfield.keyboardType = .asciiCapable
             
@@ -116,12 +116,14 @@ class ShoeViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
 
 struct AllertActionTitles {
-    static let AddNewTeam = "Add New Team"
-    static let NewTeamsName = "New team's name"
+    static let AddNewShoe = "Add New Shoe"
+    static let NewShoeName = "New Shoe name"
+    static let AddNewOrg = "Add New Organization"
+    static let NewOrgName = "New Organization name"
     static let OK = "OK"
     static let Cancel = "Cancel"
-    static let FailedToLoadTeams = "Failed to load teams"
-    static let FailedToAddNewTeam = "Failed to add new team"
+    static let FailedToLoadTeams = "Failed to load organization"
+    static let FailedToAddNewTeam = "Failed to add new organization"
     static let Yes = "Yes"
     static let No = "No"
     static let Loading = "Loading"

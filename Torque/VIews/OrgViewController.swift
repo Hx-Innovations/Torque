@@ -22,6 +22,7 @@ class OrgViewController: UIViewController, UITableViewDataSource, UITableViewDel
     override func viewDidLoad() {
         super.viewDidLoad()
         setupPlusButton()
+        self.navigationController?.isNavigationBarHidden = false
         
         self.isisTable.dataSource = self
         self.isisTable.delegate = self
@@ -47,9 +48,9 @@ class OrgViewController: UIViewController, UITableViewDataSource, UITableViewDel
     
     @objc func didTapAddOrgButton(_ sender: UIBarButtonItem) {
            // Add alert controller
-           let alertController = UIAlertController(title: AllertActionTitles.AddNewTeam, message: nil, preferredStyle: .alert)
+        let alertController = UIAlertController(title: AllertActionTitles.AddNewOrg, message: nil, preferredStyle: .alert)
            alertController.addTextField(configurationHandler: { textfield in
-               textfield.placeholder = AllertActionTitles.NewTeamsName
+               textfield.placeholder = AllertActionTitles.NewOrgName
                textfield.autocapitalizationType = .words
                textfield.keyboardType = .asciiCapable
                

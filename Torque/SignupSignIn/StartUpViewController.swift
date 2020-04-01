@@ -78,7 +78,7 @@ class StartUpViewController: UIViewController {
     func goToHomeScreen() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let mainVC = storyboard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
-        let navigavtionController = UINavigationController(rootViewController: mainVC)
+        //let navigavtionController = UINavigationController(rootViewController: mainVC)
         self.navigationController?.pushViewController(mainVC, animated: true)
         //present(navigavtionController, animated: true, completion: nil)
     
