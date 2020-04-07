@@ -1292,10 +1292,10 @@ extension ViewController {
         
         if self.shoeId.isEmpty {
             newMetaData.customMetadata = ["shoeId":"None"]
-            newMetaData.customMetadata = ["shoeName": "None"]
+            //newMetaData.customMetadata = ["shoeName": "None"]
         }else {
             newMetaData.customMetadata = ["shoeId": self.shoeId]
-            newMetaData.customMetadata = ["shoeName": self.shoeName]
+            //newMetaData.customMetadata = ["shoeName": self.shoeName]
         }
         
         let time = getTime()
