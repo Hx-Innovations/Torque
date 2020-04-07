@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreBluetooth
+import UIKit
 
 // Dictionary extensions
 extension Dictionary where Value: Equatable {
@@ -113,4 +114,8 @@ func getTime() -> String {
     return strDate
 }
 
-
+func uploadComplete(message:String = "upload complete") -> UIAlertController{
+    let uploadController = UIAlertController(title: message, message: nil, preferredStyle: .actionSheet)
+    uploadController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+    return uploadController
+}

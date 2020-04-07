@@ -205,7 +205,7 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate {
     @IBAction func exportIMU(_ sender: Any) {
         let fileName = "imuDownload.csv"
         let path = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(fileName)
-        var csvText = "ankleAngleX, ankleAngleY, ankleAngleZ, lowLegAngleMag,lowLegAngleX, lowLegAngleY, lowLegAngleZ, lowLegAngleVeloMag, lowLegAngleVeloX, lowLegAngleVeloY, lowLegAngleVeloZ, lowLegAngleAccelX, lowLegAngleAccelY, lowLegAngleAccelZ, footAngleMag, footAngleX, footAngleY, footAngleZ, footAngleVeloMag, footAngleVeloX, footAngleVeloY,  footAngleVeloZ, footAngleAccelMag, footAngleAccelX, footAngleAccelY, footAngleAccelZ, footPosMag, footPosX, footPosY, footPosZ,footSpeedMag, footSpeedX, footSpeedY, footSpeedZ, footAccelMag, footAccelX, footAccelY, footAccelZ, lowLegPosMag, lowLegPosX, lowLegPosY, lowLegPosZ, lowLegSpeedMag, lowLegSpeedX, lowLegSpeedY, lowLegSpeedZ, lowLegAccelMag, lowLegAccelX, lowLegAccelY, lowLegAccelZ, medGastro, tibAnterior,\n"
+        var csvText = "ankleAngleX,ankleAngleY,ankleAngleZ,lowLegAngleMag,lowLegAngleX,lowLegAngleY,lowLegAngleZ,lowLegAngleVeloMag,lowLegAngleVeloX,lowLegAngleVeloY,lowLegAngleVeloZ,lowLegAngleAccelX,lowLegAngleAccelY,lowLegAngleAccelZ,footAngleMag,footAngleX,footAngleY,footAngleZ,footAngleVeloMag,footAngleVeloX,footAngleVeloY,footAngleVeloZ,footAngleAccelMag,footAngleAccelX,footAngleAccelY,footAngleAccelZ,footPosMag,footPosX,footPosY,footPosZ,footSpeedMag,footSpeedX,footSpeedY,footSpeedZ,footAccelMag,footAccelX,footAccelY,footAccelZ,lowLegPosMag,lowLegPosX,lowLegPosY,lowLegPosZ,lowLegSpeedMag,lowLegSpeedX,lowLegSpeedY,lowLegSpeedZ,lowLegAccelMag,lowLegAccelX,lowLegAccelY,lowLegAccelZ,medGastro,tibAnterior\n"
         let count = self.imuDictionary?.count
         var angleX, angleY, angleZ: Float
         var i = 0
@@ -1308,7 +1308,8 @@ extension ViewController {
             let uploadTask = equivalencyTest.putFile(from: localFile as URL, metadata: newMetaData) { metadata, error in
               guard let metadata = metadata else {
                 // Uh-oh, an error occurred!
-                  
+                let s = uploadComplete(message: "Error \(error)")
+                self.present(s, animated:true)
                   print("error upload file to storage folder \(error)")
                 return
               }
@@ -1319,6 +1320,9 @@ extension ViewController {
                 guard let downloadURL = url else {
                   // Uh-oh, an error occurred!
                   print("download link, \(url)")
+//                    let s = uploadComplete(message: "Files Uploaded to database")
+//                    self.present(s, animated:false)
+                    self.showStatusLabel(message: "successfully uploaded to the database")
                   return
                 }
               }
