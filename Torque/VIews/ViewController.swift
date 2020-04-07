@@ -96,6 +96,7 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate {
         setupPeripherals()
         self.deviceLabel.text = "Shoe Name: \(shoeName)"
         
+        self.navigationController?.isNavigationBarHidden = true
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

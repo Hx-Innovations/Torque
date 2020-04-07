@@ -101,6 +101,26 @@ class FireViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
+    func addOrg(name: String, completion: @escaping ([String: String]?, Error?) -> Void) {
+        var db: Firestore!
+        // [START setup]
+        let settings = FirestoreSettings()
+        Firestore.firestore().settings = settings
+               // [END setup]
+        db = Firestore.firestore()
+        let newOrg = ["name": name]
+        var ref: DocumentReference? = nil
+        ref = db.collection("organization").addDocument(data: newOrg) { (error) in
+            
+            if let docId = ref?.documentID {
+                let addedOrg = ["orgId": docId, "name": name]
+                completion(addedOrg, error)
+            } else {
+                completion(nil, error)
+            }
+        }
+    }
+    
     func getShoes(organizationId: String, _ completion: @escaping ([[String: String]]) -> Void) {
         var db: Firestore!
         var organizationList:[[String: String]] = []
@@ -122,6 +142,26 @@ class FireViewController: UIViewController, UITableViewDelegate, UITableViewData
                     organizationList.append(["name": shoeName, "shoeId": document.documentID])
                 }
                 completion(organizationList)
+            }
+        }
+    }
+    
+    func addShoes(name: String, organizationId: String, completion: @escaping ([String: String]?, Error?) -> Void) {
+        var db: Firestore!
+        // [START setup]
+        let settings = FirestoreSettings()
+        Firestore.firestore().settings = settings
+               // [END setup]
+        db = Firestore.firestore()
+        let newShoe = ["name": name, "organizationId": organizationId]
+        var ref: DocumentReference? = nil
+        ref = db.collection("shoes").addDocument(data: newShoe) { (error) in
+            
+            if let docId = ref?.documentID {
+                let addedShoe = ["shoeId": docId, "name": name]
+                completion(addedShoe, error)
+            } else {
+                completion(nil, error)
             }
         }
     }
