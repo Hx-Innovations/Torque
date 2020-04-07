@@ -38,6 +38,7 @@ class MVCLateralViewController: UIViewController {
     func viewDidLoad() {
         super.viewDidLoad()
         setupPeripherals()
+        self.navigationController?.isNavigationBarHidden = false
 
     }
     

@@ -34,6 +34,7 @@ class SensoryTypeViewController: UIViewController {
         super.viewDidLoad()
         typePicker.delegate = self
         typePicker.dataSource = self
+        
 
         // Do any additional setup after loading the view.
     }
