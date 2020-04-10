@@ -485,6 +485,15 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate {
                     UIActivity.ActivityType.postToFacebook,
                     UIActivity.ActivityType.openInIBooks
                 ]
+                
+                if let popoverController = vcExportCSV.popoverPresentationController {
+                    popoverController.sourceRect = CGRect(x: UIScreen.main.bounds.width / 2, y: UIScreen.main.bounds.height / 2, width: 0, height: 0)
+                    popoverController.sourceView = self.view
+                    popoverController.permittedArrowDirections = UIPopoverArrowDirection(rawValue: 0)
+                    let doneButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(popView))
+                    popoverController.barButtonItem = navigationItem.rightBarButtonItem
+                }
+                
                 present(vcExportCSV, animated: true, completion: nil)
                 
             }catch {
@@ -499,6 +508,9 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate {
         
     }
     
+    @objc func popView(){
+        self.presentedViewController?.dismiss(animated: true, completion: nil)
+    }
     @IBAction func emailReport(_ sender: Any) {
         self.sendEmailAlert()
         
