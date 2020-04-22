@@ -12,7 +12,7 @@ import UIKit
 import FirebaseFirestore
 
 
-class ShoeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ShoeViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate {
     
     var shoesCount = 2
     var shoesText : [[String: String]] = [["abcd": "hello", "efgh": "hello2"]]
@@ -34,8 +34,10 @@ class ShoeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
    
     func getShoesData() {
-        var s = FireViewController()
+        let s = FireViewController()
+        toggleSpinner(show: true)
         s.getShoes(organizationId: self.organizationId) {[weak self] (shoes) in
+            self?.toggleSpinner(show: false)
             self?.shoesText = shoes
             self?.isisTable.reloadData()
         }
@@ -65,5 +67,3 @@ class ShoeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
 }
-    
-

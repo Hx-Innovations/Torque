@@ -15,7 +15,7 @@ import Accelerate
 
 
 //Mark: lifeCycle
-class ViewController: UIViewController, MFMailComposeViewControllerDelegate {
+class ViewController: BaseViewController, MFMailComposeViewControllerDelegate {
     
     private let LICENSE_CODE = "x7XURbDfbQWKYOQE7kr3"
     
