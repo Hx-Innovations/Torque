@@ -24,6 +24,13 @@ class StartUpViewController: UIViewController {
         authUI?.delegate = self
         
         if authUI.auth?.currentUser != nil {
+            authUI.auth?.currentUser?.getIDToken(completion: { (token, error) in
+                if (error != nil) {
+                    print(error)
+                }else {
+                    print ("Token here -->", token)
+                }
+            })
             goToHomeScreen()
         } else {
             signIn()
@@ -38,6 +45,13 @@ class StartUpViewController: UIViewController {
     
     @IBAction func getStartedClicked( _ sender: Any){
         if authUI.auth?.currentUser != nil {
+            authUI.auth?.currentUser?.getIDToken(completion: { (token, error) in
+                if (error != nil) {
+                    print(error)
+                }else {
+                    print ("Token -->", token)
+                }
+            })
             self.goToHomeScreen()
         }else {
             self.signIn()
@@ -69,8 +83,23 @@ class StartUpViewController: UIViewController {
         ]
         if authUI.auth?.currentUser == nil {
             self.authUI?.providers = providers
+            authUI.auth?.currentUser?.getIDToken(completion: { (token, error) in
+                if (error != nil) {
+                    print(error)
+                }else {
+                    print ("Token here -->", token)
+                }
+            })
+
             present(authUI.authViewController(), animated: true, completion: nil)
         } else {
+            authUI.auth?.currentUser?.getIDToken(completion: { (token, error) in
+                           if (error != nil) {
+                               print(error)
+                           }else {
+                               print ("Token here -->", token)
+                           }
+                       })
             goToHomeScreen()
         }
     }
