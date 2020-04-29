@@ -11,6 +11,7 @@ import WearnotchSDK
 import CoreBluetooth
 import MessageUI
 import Accelerate
+import Firebase
 
 
 
@@ -50,7 +51,7 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate {
     //var emgData.tibAnterior = [Double]()  // 2 - Tibilar Anterior
     //var emgData.peroneals = [Double]()  // 3- Peroneals
     var emgDataArray = [0.0,0.0,0.0,0.0]
-    var imuDictionary: [[String : Float]]? = []
+    var imuDictionary: [[String : Float]]? = [["test":9.089],["nameTwo":9.898]]
     var blueToothPeripheralsDelegate: BluetoothControllerDelegate?
     var MVCDict: [String:Double] = [:]
     var captureTimeConfiguration = 30
@@ -205,7 +206,7 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate {
     @IBAction func exportIMU(_ sender: Any) {
         let fileName = "imuDownload.csv"
         let path = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(fileName)
-        var csvText = "ankleAngleX, ankleAngleY, ankleAngleZ, lowLegAngleMag,lowLegAngleX, lowLegAngleY, lowLegAngleZ, lowLegAngleVeloMag, lowLegAngleVeloX, lowLegAngleVeloY, lowLegAngleVeloZ, lowLegAngleAccelX, lowLegAngleAccelY, lowLegAngleAccelZ, footAngleMag, footAngleX, footAngleY, footAngleZ, footAngleVeloMag, footAngleVeloX, footAngleVeloY,  footAngleVeloZ, footAngleAccelMag, footAngleAccelX, footAngleAccelY, footAngleAccelZ, footPosMag, footPosX, footPosY, footPosZ,footSpeedMag, footSpeedX, footSpeedY, footSpeedZ, footAccelMag, footAccelX, footAccelY, footAccelZ, lowLegPosMag, lowLegPosX, lowLegPosY, lowLegPosZ, lowLegSpeedMag, lowLegSpeedX, lowLegSpeedY, lowLegSpeedZ, lowLegAccelMag, lowLegAccelX, lowLegAccelY, lowLegAccelZ, medGastro, tibAnterior,\n"
+        var csvText = "ankleAngleX,ankleAngleY,ankleAngleZ,lowLegAngleMag,lowLegAngleX,lowLegAngleY,lowLegAngleZ,lowLegAngleVeloMag,lowLegAngleVeloX,lowLegAngleVeloY,lowLegAngleVeloZ,lowLegAngleAccelX,lowLegAngleAccelY,lowLegAngleAccelZ,footAngleMag,footAngleX,footAngleY,footAngleZ,footAngleVeloMag,footAngleVeloX,footAngleVeloY,footAngleVeloZ,footAngleAccelMag,footAngleAccelX,footAngleAccelY,footAngleAccelZ,footPosMag,footPosX,footPosY,footPosZ,footSpeedMag,footSpeedX,footSpeedY,footSpeedZ,footAccelMag,footAccelX,footAccelY,footAccelZ,lowLegPosMag,lowLegPosX,lowLegPosY,lowLegPosZ,lowLegSpeedMag,lowLegSpeedX,lowLegSpeedY,lowLegSpeedZ,lowLegAccelMag,lowLegAccelX,lowLegAccelY,lowLegAccelZ,medGastro,tibAnterior\n"
         let count = self.imuDictionary?.count
         var angleX, angleY, angleZ: Float
         var i = 0
@@ -464,7 +465,10 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate {
                 }
             }
             
-            self.uploadTestDB(imuDictionary: imuDictionary)
+            //upload entire csv file
+            //self.uploadTestDB(imuDictionary: imuDictionary)
+            self.uploadCSVFile(path: path! as NSURL)
+        
             // clear IMU data
             imuDictionary = [[String:Float]]()
             
@@ -481,6 +485,15 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate {
                     UIActivity.ActivityType.postToFacebook,
                     UIActivity.ActivityType.openInIBooks
                 ]
+                
+                if let popoverController = vcExportCSV.popoverPresentationController {
+                    popoverController.sourceRect = CGRect(x: UIScreen.main.bounds.width / 2, y: UIScreen.main.bounds.height / 2, width: 0, height: 0)
+                    popoverController.sourceView = self.view
+                    popoverController.permittedArrowDirections = UIPopoverArrowDirection(rawValue: 0)
+                    let doneButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(popView))
+                    popoverController.barButtonItem = navigationItem.rightBarButtonItem
+                }
+                
                 present(vcExportCSV, animated: true, completion: nil)
                 
             }catch {
@@ -495,6 +508,9 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate {
         
     }
     
+    @objc func popView(){
+        self.presentedViewController?.dismiss(animated: true, completion: nil)
+    }
     @IBAction func emailReport(_ sender: Any) {
         self.sendEmailAlert()
         
@@ -1267,11 +1283,68 @@ extension ViewController {
         let s = FireViewController()
         s.postTest(shoeId: shoeId, imuDictionary: imuDictionary ?? []) { (response) in
             if response == "error" {
-                self.showToast("upload error")
+                self.showToast("upload error \(response)")
             }else {
-                self.showToast("successful upload")
+                self.showToast("successful upload \(response)")
             }
         }
+    }
+    
+    func uploadCSVFile(path: NSURL){
+        let storage = Storage.storage()
+        
+        // Create a root reference
+        let storageRef = storage.reference()
+        
+        let localFile = path
+        
+        //meta data
+        let newMetaData = StorageMetadata()
+        
+        
+        if self.shoeId.isEmpty {
+            newMetaData.customMetadata = ["shoeId":"None"]
+            //newMetaData.customMetadata = ["shoeName": "None"]
+        }else {
+            newMetaData.customMetadata = ["shoeId": self.shoeId]
+            //newMetaData.customMetadata = ["shoeName": self.shoeName]
+        }
+        
+        let time = getTime()
+        // Create a reference to "mountains.jpg"
+        let equivalencyTest = storageRef.child("test/\(shoeName ?? "None")-\(time)")
+        
+        
+        
+      // Upload the file to the path "images/rivers.jpg"
+        DispatchQueue.main.async {
+            let uploadTask = equivalencyTest.putFile(from: localFile as URL, metadata: newMetaData) { metadata, error in
+              guard let metadata = metadata else {
+                // Uh-oh, an error occurred!
+                let s = uploadComplete(message: "Error \(error)")
+                self.present(s, animated:true)
+                  print("error upload file to storage folder \(error)")
+                return
+              }
+              // Metadata contains file metadata such as size, content-type.
+              let size = metadata.size
+              // You can also access to download URL after upload.
+              equivalencyTest.downloadURL { (url, error) in
+                guard let downloadURL = url else {
+                  // Uh-oh, an error occurred!
+                  print("download link, \(url)")
+//                    let s = uploadComplete(message: "Files Uploaded to database")
+//                    self.present(s, animated:false)
+                    self.showStatusLabel(message: "successfully uploaded to the database")
+                  return
+                }
+              }
+            }
+        }
+        
+        
+
+
     }
 }
 

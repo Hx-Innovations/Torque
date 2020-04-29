@@ -182,9 +182,11 @@ class FireViewController: UIViewController, UITableViewDelegate, UITableViewData
         ]
         db.collection("test").addDocument(data: testdata) { (err) in
             if let err = err {
-                completion("error")
+                completion("error, \(err)")
+                print("imu post error \(err)")
             } else {
                 completion("successful upload")
+                print("succesfully uploaded")
             }
         }
     }

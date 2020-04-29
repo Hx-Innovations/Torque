@@ -9,4 +9,5 @@ target 'Torque' do
     pod 'Firebase/Firestore'
     pod 'Firebase/Auth'
     pod 'FirebaseUI'
+    pod 'Firebase/Storage'
 end
