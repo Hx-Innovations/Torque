@@ -46,6 +46,7 @@ class ViewController: BaseViewController, MFMailComposeViewControllerDelegate {
             let captureButtonText = "Capture \(selectedTime) sec"
             configureCaptureButton.setTitle(configureButtonText, for: .normal)
             captureButton.setTitle(captureButtonText, for: .normal)
+            captureTimeConfiguration = selectedTime
         }
     }
 
