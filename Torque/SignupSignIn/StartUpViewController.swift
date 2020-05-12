@@ -18,6 +18,7 @@ class StartUpViewController: UIViewController {
     var authUI: FUIAuth!
     override func viewDidLoad() {
         super.viewDidLoad()
+         self.navigationController?.modalPresentationStyle = .fullScreen
         
         print("current user", Auth.auth().currentUser?.uid)
         authUI = FUIAuth.defaultAuthUI()
@@ -79,7 +80,9 @@ class StartUpViewController: UIViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let mainVC = storyboard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
         let navigavtionController = UINavigationController(rootViewController: mainVC)
-        present(navigavtionController, animated: true, completion: nil)
+        print("Nav C", self.navigationController)
+        self.navigationController?.pushViewController(mainVC, animated: true)
+        //present(navigavtionController, animated: true, completion: nil)
     
         //self.view.window?.rootViewController =
 //        let appDelegate = UIApplication.shared.delegate as? AppDelegate

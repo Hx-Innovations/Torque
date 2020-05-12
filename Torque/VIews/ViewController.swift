@@ -90,6 +90,8 @@ class ViewController: BaseViewController, MFMailComposeViewControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupPicker()
+        self.navigationItem.hidesBackButton = true
+       
         /* pickerView.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(pickerView)
         pickerView.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
