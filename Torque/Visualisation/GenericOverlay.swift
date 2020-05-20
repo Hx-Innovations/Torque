@@ -35,7 +35,7 @@ open class SceneOverlay: SKScene {
     
     open var buttonSize: CGSize = CGSize(width: 0.3, height: 0.3)
     open var leftPadding: CGFloat = 0.1
-    open var topPadding: CGFloat = 0.1
+    open var topPadding: CGFloat = 0.7
     open var rightPadding: CGFloat = 0.1
     open var bottomPadding: CGFloat = 0.1
     
@@ -98,7 +98,7 @@ open class SceneOverlay: SKScene {
         let screenHeight: CGFloat = size.height - topPadding * dpi
         var leftPos: CGFloat = leftPadding * dpi
         var topWidth: CGFloat = CGFloat(0.0)
-        let topMargin = CGFloat(15.0)
+        let topMargin = CGFloat(50.0)
         for button in topButtons {
             let width: CGFloat = buttonSize.width * dpi * button.scale
             let height: CGFloat = buttonSize.height * dpi * button.scale

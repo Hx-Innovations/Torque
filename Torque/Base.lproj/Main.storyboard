@@ -625,9 +625,9 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lFg-ys-Ns2">
-                                                        <rect key="frame" x="0.0" y="489" width="127" height="30"/>
+                                                        <rect key="frame" x="0.0" y="489" width="178" height="30"/>
                                                         <color key="backgroundColor" red="0.080266483129999996" green="0.72267872099999997" blue="0.85492521519999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                        <state key="normal" title="  Export IMU CSV  ">
+                                                        <state key="normal" title="  Export IMU &amp; EMG CSV  ">
                                                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                                         </state>
                                                         <connections>
@@ -819,7 +819,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="qFr-Nb-yd1"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Organizations" id="1PD-5m-cEY"/>
+                    <navigationItem key="navigationItem" title="Organizations" id="1PD-5m-cEY">
+                        <barButtonItem key="backBarButtonItem" title=" " id="6Li-0R-LIU"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="isisTable" destination="OZG-Og-QUf" id="GTt-ui-21n"/>
                     </connections>
@@ -1492,7 +1494,7 @@
             </objects>
             <point key="canvasLocation" x="-909" y="-321"/>
         </scene>
-        <!--Organizations-->
+        <!--Shoe View Controller-->
         <scene sceneID="cml-ok-nmt">
             <objects>
                 <viewController storyboardIdentifier="ShoeViewController" id="rUh-vy-orG" customClass="ShoeViewController" customModule="Torque" customModuleProvider="target" sceneMemberID="viewController">
@@ -1528,14 +1530,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Hdb-00-OuI"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Organizations" id="6Ur-Zc-Ud8"/>
                     <connections>
                         <outlet property="isisTable" destination="ueV-lv-Elx" id="YRG-Ig-hlu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fPb-Cn-Wos" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-786" y="1543"/>
+            <point key="canvasLocation" x="-786.95652173913049" y="1542.8571428571429"/>
         </scene>
     </scenes>
     <resources>
