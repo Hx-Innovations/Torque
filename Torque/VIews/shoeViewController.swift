@@ -11,7 +11,7 @@ import Foundation
 import UIKit
 
 
-class ShoeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ShoeViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate {
     
     
     var shoesCount = 2
@@ -38,7 +38,9 @@ class ShoeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func getShoesData() {
+
         s.getShoes(organizationId: self.organizationId) {[weak self] (shoes) in
+            self?.toggleSpinner(show: false)
             self?.shoesText = shoes
             self?.isisTable.reloadData()
         }
@@ -115,6 +117,7 @@ class ShoeViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
 
 
+
 struct AllertActionTitles {
     static let AddNewShoe = "Add New Shoe"
     static let NewShoeName = "New Shoe name"
@@ -130,3 +133,4 @@ struct AllertActionTitles {
     static let YouHaveNoTeams = "You have no teams. Use the + button."
     
 }
+

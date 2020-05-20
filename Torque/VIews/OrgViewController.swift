@@ -10,7 +10,7 @@ import UIKit
 import FirebaseFirestore
 
 
-class OrgViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class OrgViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate {
     
     var orgCount = 2
     var orgs : [[String: String]] = [["abcd": "hello", "efgh": "hello2"]]
@@ -34,7 +34,10 @@ class OrgViewController: UIViewController, UITableViewDataSource, UITableViewDel
     }
    
     func getOrgData() {
+
+
         s.getOrgs {[weak self] (orgs) in
+            self?.toggleSpinner(show: false)
             self?.orgs = orgs
             self?.isisTable.reloadData()
         }

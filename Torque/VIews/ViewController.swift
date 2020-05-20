@@ -16,10 +16,12 @@ import Firebase
 
 
 //Mark: lifeCycle
-class ViewController: UIViewController, MFMailComposeViewControllerDelegate {
+class ViewController: BaseViewController, MFMailComposeViewControllerDelegate {
     
     private let LICENSE_CODE = "x7XURbDfbQWKYOQE7kr3"
     
+    @IBOutlet weak var pickerContainerView: UIView!
+    @IBOutlet weak var pickerView: UIPickerView!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var deviceLabel: UILabel!
     
@@ -36,7 +38,19 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate {
     @IBOutlet weak var configureCaptureButton: UIButton!
     @IBOutlet weak var captureButton: UIButton!
     @IBOutlet weak var downloadButton: UIButton!
-    
+
+    let timeOptions = [30, 40, 50, 60, 90]
+
+    var selectedTime = 30 {
+        didSet {
+            let configureButtonText = "Configure \(selectedTime) sec capture"
+            let captureButtonText = "Capture \(selectedTime) sec"
+            configureCaptureButton.setTitle(configureButtonText, for: .normal)
+            captureButton.setTitle(captureButtonText, for: .normal)
+            captureTimeConfiguration = selectedTime
+        }
+    }
+
     // Mark: EMG Variables
     var btReceiverHolderTypesArray = [Int]()
     var sessionDataValues = [[Double]]()
@@ -57,6 +71,7 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate {
     var captureTimeConfiguration = 30
     
     var htmlString = ""
+    var showingPicker = false
 
 
     private var selectedConfiguration: ConfigurationType = ConfigurationType.chest1 {
@@ -70,10 +85,19 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate {
     var currentCancellable: NotchCancellable? = nil
     var currentMeasurement: NotchMeasurement? = nil
     var measurementURL: URL?
+
     
     // Mark: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupPicker()
+        self.navigationItem.hidesBackButton = true
+       
+        /* pickerView.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(pickerView)
+        pickerView.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
+        pickerView.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
+        pickerView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true*/
         
         // set your license code here. in a real app it would be asked from the backend and saved
         AppDelegate.service.license = LICENSE_CODE
@@ -88,6 +112,10 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate {
         
         realtimeSwitch.addTarget(self, action: #selector(realtimeSwitchChanged(_ :)), for: .valueChanged)
         
+    }
+    func setupPicker() {
+        pickerView.dataSource = self
+        pickerView.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -809,8 +837,38 @@ extension ViewController {
         
         present(selectionController, animated: true, completion: nil)
     }
+    @IBAction func actionChangeTime() {
+        openPickerView()
+    }
     
+    @IBAction func donePicking() {
+        closePickerView()
+    }
+    
+    
+    
+    private func closePickerView() {
+        UIView.transition(with: pickerContainerView,
+                          duration: 0.2,
+                          options: [ .transitionFlipFromBottom ],
+                          animations: {
+                            self.pickerContainerView.alpha = 0
+                            self.view.layoutIfNeeded()
+        }, completion: nil)
+    }
+    private func openPickerView() {
+        pickerView.isHidden = false
+        UIView.transition(with: pickerContainerView,
+                          duration: 0.2,
+                          options: .transitionFlipFromTop,
+                          animations: {
+                            self.pickerContainerView.alpha = 1
+                            self.view.layoutIfNeeded()
+        },
+                          completion: nil)
+    }
 }
+
 
 // MARK: - Calibration
 extension ViewController {
@@ -1527,3 +1585,21 @@ extension ViewController {
 }
 
 
+extension  ViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return 5
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return "\(timeOptions[row])"
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        let selectedTime = timeOptions[row]
+        self.selectedTime = selectedTime
+    }
+}
