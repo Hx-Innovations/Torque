@@ -136,8 +136,8 @@ class FireViewController: UIViewController, UITableViewDelegate, UITableViewData
             } else {
                 for document in querySnapshot!.documents {
                     print("Here???  2 \(document.documentID) => \(document.data())")
-                    let shoe = document.data() as? [String: String]
-                    let shoeName = shoe?["name"] ?? ""
+                    let shoe = document.data() as? [String: Any]
+                    let shoeName = shoe?["name"] as? String ?? ""
                     print("Org name here", shoeName)
                     organizationList.append(["name": shoeName, "shoeId": document.documentID])
                 }
