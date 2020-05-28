@@ -56,6 +56,7 @@
 		886E6FDD23CD01D4005E0DEA /* TorqueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886E6FDC23CD01D4005E0DEA /* TorqueTests.swift */; };
 		886E6FE823CD01D4005E0DEA /* TorqueUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886E6FE723CD01D4005E0DEA /* TorqueUITests.swift */; };
 		88DD5B14242A935100D14076 /* shoeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DD5B13242A935100D14076 /* shoeViewController.swift */; };
+		8E23C4202480107F009E511E /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E23C41F2480107F009E511E /* BaseViewController.swift */; };
 		91342234422EF455E558A3FF /* Pods_Torque.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 768175CA41586B3D7AE24134 /* Pods_Torque.framework */; };
 /* End PBXBuildFile section */
 
@@ -133,6 +134,7 @@
 		886E6FE723CD01D4005E0DEA /* TorqueUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TorqueUITests.swift; sourceTree = "<group>"; };
 		886E6FE923CD01D4005E0DEA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		88DD5B13242A935100D14076 /* shoeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = shoeViewController.swift; sourceTree = "<group>"; };
+		8E23C41F2480107F009E511E /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		9CDC3D921AC0F0278FE117ED /* Pods-Torque.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Torque.debug.xcconfig"; path = "Target Support Files/Pods-Torque/Pods-Torque.debug.xcconfig"; sourceTree = "<group>"; };
 		EC3235052421D4D05C9D8939 /* Pods-Torque.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Torque.release.xcconfig"; path = "Target Support Files/Pods-Torque/Pods-Torque.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -176,6 +178,7 @@
 			children = (
 				8857D48723FDB6AE007587A2 /* SensorBodyAttachmentViewController.swift */,
 				8857D48823FDB6AE007587A2 /* ViewController.swift */,
+				8E23C41F2480107F009E511E /* BaseViewController.swift */,
 				8857D48923FDB6AE007587A2 /* MVCLateralViewController.swift */,
 				8857D48A23FDB6AE007587A2 /* SensoryTypeViewController.swift */,
 				8857D48B23FDB6AE007587A2 /* PeripheralsViewController.swift */,
@@ -544,6 +547,7 @@
 				8857D49523FDB6AE007587A2 /* OrgViewController.swift in Sources */,
 				8857D4DC23FDB782007587A2 /* StartUpViewController.swift in Sources */,
 				8857D49323FDB6AE007587A2 /* PeripheralsViewController.swift in Sources */,
+				8E23C4202480107F009E511E /* BaseViewController.swift in Sources */,
 				8857D4C023FDB756007587A2 /* ConfigurationType.swift in Sources */,
 				8857D4A323FDB6CC007587A2 /* VisualiserViewController.swift in Sources */,
 				8857D4D523FDB762007587A2 /* emgPeripheralModel.swift in Sources */,
