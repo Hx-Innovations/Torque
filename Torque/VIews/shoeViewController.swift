@@ -38,7 +38,8 @@ class ShoeViewController: BaseViewController, UITableViewDataSource, UITableView
     }
     
     func getShoesData() {
-
+        
+        toggleSpinner(show: true)
         s.getShoes(organizationId: self.organizationId) {[weak self] (shoes) in
             self?.toggleSpinner(show: false)
             self?.shoesText = shoes

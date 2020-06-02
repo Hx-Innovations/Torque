@@ -35,7 +35,7 @@ class OrgViewController: BaseViewController, UITableViewDataSource, UITableViewD
    
     func getOrgData() {
 
-
+        toggleSpinner(show: true)
         s.getOrgs {[weak self] (orgs) in
             self?.toggleSpinner(show: false)
             self?.orgs = orgs
