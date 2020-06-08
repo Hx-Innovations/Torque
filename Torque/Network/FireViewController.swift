@@ -146,14 +146,14 @@ class FireViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
-    func addShoes(name: String, organizationId: String, completion: @escaping ([String: String]?, Error?) -> Void) {
+    func addShoes(name: String, organizationId: String, sku:String, completion: @escaping ([String: String]?, Error?) -> Void) {
         var db: Firestore!
         // [START setup]
         let settings = FirestoreSettings()
         Firestore.firestore().settings = settings
                // [END setup]
         db = Firestore.firestore()
-        let newShoe = ["name": name, "organizationId": organizationId]
+        let newShoe = ["name": name, "organizationId": organizationId, "sku":sku]
         var ref: DocumentReference? = nil
         ref = db.collection("shoes").addDocument(data: newShoe) { (error) in
             

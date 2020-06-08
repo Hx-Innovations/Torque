@@ -79,13 +79,19 @@ class ShoeViewController: BaseViewController, UITableViewDataSource, UITableView
             
             // textfield.addTarget(self, action: #selector(self.textChangedInAlertController(_:)), for: .editingChanged)
         })
+        alertController.addTextField { (textfield) in
+            textfield.placeholder = AllertActionTitles.AddSkuNumber
+            textfield.autocapitalizationType = .words
+            textfield.keyboardType = .asciiCapable
+        }
         let addShoeAction = UIAlertAction(title: "Add", style: .default) {[weak self] (action) in
             guard let shoeName = alertController.textFields?[0].text,
-                let organizationId = self?.organizationId else { return }
+                let organizationId = self?.organizationId,
+                let sku = alertController.textFields?[1].text else { return }
         
             if shoeName.count < 1 { return }
             
-            self?.s.addShoes(name: shoeName, organizationId: organizationId) { addedShoe, error in
+            self?.s.addShoes(name: shoeName, organizationId: organizationId, sku:sku) { addedShoe, error in
                 
                 if let addedShoe = addedShoe,  error == nil {
                     self?.shoesText.append(addedShoe)
@@ -122,6 +128,7 @@ class ShoeViewController: BaseViewController, UITableViewDataSource, UITableView
 struct AllertActionTitles {
     static let AddNewShoe = "Add New Shoe"
     static let NewShoeName = "New Shoe name"
+    static let AddSkuNumber = "Add Sku Number"
     static let AddNewOrg = "Add New Organization"
     static let NewOrgName = "New Organization name"
     static let OK = "OK"
