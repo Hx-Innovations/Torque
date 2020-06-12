@@ -820,7 +820,7 @@ extension ViewController {
 // MARK: - Workout selection
 extension ViewController {
     @IBAction func actionShowWorkouts() {
-        let selectionController = UIAlertController(title: "Choose workout", message: nil, preferredStyle: .actionSheet)
+        let selectionController = UIAlertController(title: "Choose workout", message: nil, preferredStyle: .alert)
         
         ConfigurationType.allItems.forEach { (type) in
             selectionController.addAction(
