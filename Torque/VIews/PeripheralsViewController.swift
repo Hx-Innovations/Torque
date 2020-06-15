@@ -170,7 +170,7 @@ class PeripheralsViewController: UIViewController {
         super.viewDidLoad()
         
         setupBluetoothConnection()
-        
+        self.navigationController?.isNavigationBarHidden = false
         // Tracks user has entered this view
 //        Answers.logContentView(withName: "Connecting via Bluetooth Screen", contentType: "bluetooth, ble, sensors", contentId: "5", customAttributes: [:])
 

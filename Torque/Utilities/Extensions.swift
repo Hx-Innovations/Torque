@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreBluetooth
+import UIKit
 
 // Dictionary extensions
 extension Dictionary where Value: Equatable {
@@ -102,4 +103,19 @@ protocol BluetoothControllerDelegate {
     func didAddPeripherals(array: [Peripheral]?, btmanager: CBCentralManager?)
 }
 
+func getTime() -> String {
+    let unixtimeInterval = Date().timeIntervalSince1970 
+    let date = Date(timeIntervalSince1970: unixtimeInterval)
+    let dateFormatter = DateFormatter()
+    dateFormatter.timeZone = TimeZone(abbreviation: "EST") //Set timezone that you want
+    dateFormatter.locale = NSLocale.current
+    dateFormatter.dateFormat = "yyyy-MM-dd HH:mm" //Specify your format that you want
+    let strDate = dateFormatter.string(from: date)
+    return strDate
+}
 
+func uploadComplete(message:String = "upload complete") -> UIAlertController{
+    let uploadController = UIAlertController(title: message, message: nil, preferredStyle: .actionSheet)
+    uploadController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+    return uploadController
+}

@@ -101,6 +101,26 @@ class FireViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
+    func addOrg(name: String, completion: @escaping ([String: String]?, Error?) -> Void) {
+        var db: Firestore!
+        // [START setup]
+        let settings = FirestoreSettings()
+        Firestore.firestore().settings = settings
+               // [END setup]
+        db = Firestore.firestore()
+        let newOrg = ["name": name]
+        var ref: DocumentReference? = nil
+        ref = db.collection("organization").addDocument(data: newOrg) { (error) in
+            
+            if let docId = ref?.documentID {
+                let addedOrg = ["orgId": docId, "name": name]
+                completion(addedOrg, error)
+            } else {
+                completion(nil, error)
+            }
+        }
+    }
+    
     func getShoes(organizationId: String, _ completion: @escaping ([[String: String]]) -> Void) {
         var db: Firestore!
         var organizationList:[[String: String]] = []
@@ -116,12 +136,32 @@ class FireViewController: UIViewController, UITableViewDelegate, UITableViewData
             } else {
                 for document in querySnapshot!.documents {
                     print("Here???  2 \(document.documentID) => \(document.data())")
-                    let shoe = document.data() as? [String: String]
-                    let shoeName = shoe?["name"] ?? ""
+                    let shoe = document.data() as? [String: Any]
+                    let shoeName = shoe?["name"] as? String ?? ""
                     print("Org name here", shoeName)
                     organizationList.append(["name": shoeName, "shoeId": document.documentID])
                 }
                 completion(organizationList)
+            }
+        }
+    }
+    
+    func addShoes(name: String, organizationId: String, sku:String, completion: @escaping ([String: String]?, Error?) -> Void) {
+        var db: Firestore!
+        // [START setup]
+        let settings = FirestoreSettings()
+        Firestore.firestore().settings = settings
+               // [END setup]
+        db = Firestore.firestore()
+        let newShoe = ["name": name, "organizationId": organizationId, "sku":sku]
+        var ref: DocumentReference? = nil
+        ref = db.collection("shoes").addDocument(data: newShoe) { (error) in
+            
+            if let docId = ref?.documentID {
+                let addedShoe = ["shoeId": docId, "name": name]
+                completion(addedShoe, error)
+            } else {
+                completion(nil, error)
             }
         }
     }
@@ -142,9 +182,11 @@ class FireViewController: UIViewController, UITableViewDelegate, UITableViewData
         ]
         db.collection("test").addDocument(data: testdata) { (err) in
             if let err = err {
-                completion("error")
+                completion("error, \(err)")
+                print("imu post error \(err)")
             } else {
                 completion("successful upload")
+                print("succesfully uploaded")
             }
         }
     }

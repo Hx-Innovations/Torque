@@ -30,6 +30,7 @@ class MVCAnteriorViewController: UIViewController {
     func viewDidLoad() {
         super.viewDidLoad()
         setupPeripherals()
+        self.navigationController?.isNavigationBarHidden = false
 
     }
     

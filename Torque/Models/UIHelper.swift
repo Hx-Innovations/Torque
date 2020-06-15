@@ -14,8 +14,8 @@ extension UIViewController {
     
     func showToast(_ message : String = "Success") {
         DispatchQueue.main.async {
-            let toastLabel = UILabel(frame: CGRect(x: self.view.frame.size.width/2 - 125, y: self.view.frame.size.height-80, width: 250, height: 35))
-            toastLabel.backgroundColor = UIColor.black.withAlphaComponent(0.6)
+            let toastLabel = UILabel(frame: CGRect(x: self.view.frame.size.width/2 - 125, y: self.view.frame.size.height-90, width: 250, height: 60))
+            toastLabel.backgroundColor = UIColor.black.withAlphaComponent(1.0)
             toastLabel.textColor = UIColor.white
             toastLabel.textAlignment = .center;
             toastLabel.font = UIFont(name: "Montserrat-Light", size: 12.0)

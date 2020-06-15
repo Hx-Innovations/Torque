@@ -9,6 +9,7 @@ target 'Torque' do
     pod 'Firebase/Firestore'
     pod 'Firebase/Auth'
     pod 'FirebaseUI'
+    pod 'Firebase/Storage'
 
 # Remove the static WearnotchSDK libraries from the app target in order to avoid duplicated static library copy
 post_install do |installer|
@@ -37,7 +38,6 @@ post_install do |installer|
     end
   end
 end
-
 
 
 end

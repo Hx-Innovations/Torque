@@ -11,14 +11,17 @@ import WearnotchSDK
 import CoreBluetooth
 import MessageUI
 import Accelerate
+import Firebase
 
 
 
 //Mark: lifeCycle
-class ViewController: UIViewController, MFMailComposeViewControllerDelegate {
+class ViewController: BaseViewController, MFMailComposeViewControllerDelegate {
     
     private let LICENSE_CODE = "x7XURbDfbQWKYOQE7kr3"
     
+    @IBOutlet weak var pickerContainerView: UIView!
+    @IBOutlet weak var pickerView: UIPickerView!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var deviceLabel: UILabel!
     
@@ -35,7 +38,19 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate {
     @IBOutlet weak var configureCaptureButton: UIButton!
     @IBOutlet weak var captureButton: UIButton!
     @IBOutlet weak var downloadButton: UIButton!
-    
+
+    let timeOptions = [30, 40, 50, 60, 90]
+
+    var selectedTime = 30 {
+        didSet {
+            let configureButtonText = "Configure \(selectedTime) sec capture"
+            let captureButtonText = "Capture \(selectedTime) sec"
+            configureCaptureButton.setTitle(configureButtonText, for: .normal)
+            captureButton.setTitle(captureButtonText, for: .normal)
+            captureTimeConfiguration = selectedTime
+        }
+    }
+
     // Mark: EMG Variables
     var btReceiverHolderTypesArray = [Int]()
     var sessionDataValues = [[Double]]()
@@ -50,12 +65,13 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate {
     //var emgData.tibAnterior = [Double]()  // 2 - Tibilar Anterior
     //var emgData.peroneals = [Double]()  // 3- Peroneals
     var emgDataArray = [0.0,0.0,0.0,0.0]
-    var imuDictionary: [[String : Float]]? = []
+    var imuDictionary: [[String : Float]]? = [["test":9.089],["nameTwo":9.898]]
     var blueToothPeripheralsDelegate: BluetoothControllerDelegate?
     var MVCDict: [String:Double] = [:]
     var captureTimeConfiguration = 30
     
     var htmlString = ""
+    var showingPicker = false
 
 
     private var selectedConfiguration: ConfigurationType = ConfigurationType.chest1 {
@@ -69,10 +85,19 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate {
     var currentCancellable: NotchCancellable? = nil
     var currentMeasurement: NotchMeasurement? = nil
     var measurementURL: URL?
+
     
     // Mark: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupPicker()
+        self.navigationItem.hidesBackButton = true
+       
+        /* pickerView.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(pickerView)
+        pickerView.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
+        pickerView.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
+        pickerView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true*/
         
         // set your license code here. in a real app it would be asked from the backend and saved
         AppDelegate.service.license = LICENSE_CODE
@@ -88,6 +113,10 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate {
         realtimeSwitch.addTarget(self, action: #selector(realtimeSwitchChanged(_ :)), for: .valueChanged)
         
     }
+    func setupPicker() {
+        pickerView.dataSource = self
+        pickerView.delegate = self
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -95,6 +124,7 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate {
         setupPeripherals()
         self.deviceLabel.text = "Shoe Name: \(shoeName)"
         
+        self.navigationController?.isNavigationBarHidden = true
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -204,7 +234,7 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate {
     @IBAction func exportIMU(_ sender: Any) {
         let fileName = "imuDownload.csv"
         let path = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(fileName)
-        var csvText = "ankleAngleX, ankleAngleY, ankleAngleZ, lowLegAngleMag,lowLegAngleX, lowLegAngleY, lowLegAngleZ, lowLegAngleVeloMag, lowLegAngleVeloX, lowLegAngleVeloY, lowLegAngleVeloZ, lowLegAngleAccelX, lowLegAngleAccelY, lowLegAngleAccelZ, footAngleMag, footAngleX, footAngleY, footAngleZ, footAngleVeloMag, footAngleVeloX, footAngleVeloY,  footAngleVeloZ, footAngleAccelMag, footAngleAccelX, footAngleAccelY, footAngleAccelZ, footPosMag, footPosX, footPosY, footPosZ,footSpeedMag, footSpeedX, footSpeedY, footSpeedZ, footAccelMag, footAccelX, footAccelY, footAccelZ, lowLegPosMag, lowLegPosX, lowLegPosY, lowLegPosZ, lowLegSpeedMag, lowLegSpeedX, lowLegSpeedY, lowLegSpeedZ, lowLegAccelMag, lowLegAccelX, lowLegAccelY, lowLegAccelZ, medGastro, tibAnterior,\n"
+        var csvText = "ankleAngleX,ankleAngleY,ankleAngleZ,lowLegAngleMag,lowLegAngleX,lowLegAngleY,lowLegAngleZ,lowLegAngleVeloMag,lowLegAngleVeloX,lowLegAngleVeloY,lowLegAngleVeloZ,lowLegAngleAccelX,lowLegAngleAccelY,lowLegAngleAccelZ,footAngleMag,footAngleX,footAngleY,footAngleZ,footAngleVeloMag,footAngleVeloX,footAngleVeloY,footAngleVeloZ,footAngleAccelMag,footAngleAccelX,footAngleAccelY,footAngleAccelZ,footPosMag,footPosX,footPosY,footPosZ,footSpeedMag,footSpeedX,footSpeedY,footSpeedZ,footAccelMag,footAccelX,footAccelY,footAccelZ,lowLegPosMag,lowLegPosX,lowLegPosY,lowLegPosZ,lowLegSpeedMag,lowLegSpeedX,lowLegSpeedY,lowLegSpeedZ,lowLegAccelMag,lowLegAccelX,lowLegAccelY,lowLegAccelZ,medGastro,tibAnterior\n"
         let count = self.imuDictionary?.count
         var angleX, angleY, angleZ: Float
         var i = 0
@@ -463,7 +493,10 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate {
                 }
             }
             
-            self.uploadTestDB(imuDictionary: imuDictionary)
+            //upload entire csv file
+            //self.uploadTestDB(imuDictionary: imuDictionary)
+            self.uploadCSVFile(path: path! as NSURL)
+        
             // clear IMU data
             imuDictionary = [[String:Float]]()
             
@@ -480,6 +513,15 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate {
                     UIActivity.ActivityType.postToFacebook,
                     UIActivity.ActivityType.openInIBooks
                 ]
+                
+                if let popoverController = vcExportCSV.popoverPresentationController {
+                    popoverController.sourceRect = CGRect(x: UIScreen.main.bounds.width / 2, y: UIScreen.main.bounds.height / 2, width: 0, height: 0)
+                    popoverController.sourceView = self.view
+                    popoverController.permittedArrowDirections = UIPopoverArrowDirection(rawValue: 0)
+                    let doneButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(popView))
+                    popoverController.barButtonItem = navigationItem.rightBarButtonItem
+                }
+                
                 present(vcExportCSV, animated: true, completion: nil)
                 
             }catch {
@@ -494,6 +536,9 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate {
         
     }
     
+    @objc func popView(){
+        self.presentedViewController?.dismiss(animated: true, completion: nil)
+    }
     @IBAction func emailReport(_ sender: Any) {
         self.sendEmailAlert()
         
@@ -775,7 +820,7 @@ extension ViewController {
 // MARK: - Workout selection
 extension ViewController {
     @IBAction func actionShowWorkouts() {
-        let selectionController = UIAlertController(title: "Choose workout", message: nil, preferredStyle: .actionSheet)
+        let selectionController = UIAlertController(title: "Choose workout", message: nil, preferredStyle: .alert)
         
         ConfigurationType.allItems.forEach { (type) in
             selectionController.addAction(
@@ -792,8 +837,38 @@ extension ViewController {
         
         present(selectionController, animated: true, completion: nil)
     }
+    @IBAction func actionChangeTime() {
+        openPickerView()
+    }
     
+    @IBAction func donePicking() {
+        closePickerView()
+    }
+    
+    
+    
+    private func closePickerView() {
+        UIView.transition(with: pickerContainerView,
+                          duration: 0.2,
+                          options: [ .transitionFlipFromBottom ],
+                          animations: {
+                            self.pickerContainerView.alpha = 0
+                            self.view.layoutIfNeeded()
+        }, completion: nil)
+    }
+    private func openPickerView() {
+        pickerView.isHidden = false
+        UIView.transition(with: pickerContainerView,
+                          duration: 0.2,
+                          options: .transitionFlipFromTop,
+                          animations: {
+                            self.pickerContainerView.alpha = 1
+                            self.view.layoutIfNeeded()
+        },
+                          completion: nil)
+    }
 }
+
 
 // MARK: - Calibration
 extension ViewController {
@@ -1266,11 +1341,68 @@ extension ViewController {
         let s = FireViewController()
         s.postTest(shoeId: shoeId, imuDictionary: imuDictionary ?? []) { (response) in
             if response == "error" {
-                self.showToast("upload error")
+                self.showToast("upload error \(response)")
             }else {
-                self.showToast("successful upload")
+                self.showToast("successful upload \(response)")
             }
         }
+    }
+    
+    func uploadCSVFile(path: NSURL){
+        let storage = Storage.storage()
+        
+        // Create a root reference
+        let storageRef = storage.reference()
+        
+        let localFile = path
+        
+        //meta data
+        let newMetaData = StorageMetadata()
+        
+        
+        if self.shoeId.isEmpty {
+            newMetaData.customMetadata = ["shoeId":"None"]
+            //newMetaData.customMetadata = ["shoeName": "None"]
+        }else {
+            newMetaData.customMetadata = ["shoeId": self.shoeId]
+            //newMetaData.customMetadata = ["shoeName": self.shoeName]
+        }
+        
+        let time = getTime()
+        // Create a reference to "mountains.jpg"
+        let equivalencyTest = storageRef.child("test/\(shoeName ?? "None")-\(time)")
+        
+        
+        
+      // Upload the file to the path "images/rivers.jpg"
+        DispatchQueue.main.async {
+            let uploadTask = equivalencyTest.putFile(from: localFile as URL, metadata: newMetaData) { metadata, error in
+              guard let metadata = metadata else {
+                // Uh-oh, an error occurred!
+                let s = uploadComplete(message: "Error \(error)")
+                self.present(s, animated:true)
+                  print("error upload file to storage folder \(error)")
+                return
+              }
+              // Metadata contains file metadata such as size, content-type.
+              let size = metadata.size
+              // You can also access to download URL after upload.
+              equivalencyTest.downloadURL { (url, error) in
+                guard let downloadURL = url else {
+                  // Uh-oh, an error occurred!
+                  print("download link, \(url)")
+//                    let s = uploadComplete(message: "Files Uploaded to database")
+//                    self.present(s, animated:false)
+                    self.showStatusLabel(message: "successfully uploaded to the database")
+                  return
+                }
+              }
+            }
+        }
+        
+        
+
+
     }
 }
 
@@ -1453,3 +1585,21 @@ extension ViewController {
 }
 
 
+extension  ViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return 5
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return "\(timeOptions[row])"
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        let selectedTime = timeOptions[row]
+        self.selectedTime = selectedTime
+    }
+}

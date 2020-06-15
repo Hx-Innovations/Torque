@@ -11,19 +11,27 @@ import UIKit
 import Firebase
 import FirebaseAuth
 import FirebaseUI
-import GoogleSignIn
+//import GoogleSignIn
 
 class StartUpViewController: UIViewController {
 
     var authUI: FUIAuth!
     override func viewDidLoad() {
         super.viewDidLoad()
+         self.navigationController?.modalPresentationStyle = .fullScreen
         
         print("current user", Auth.auth().currentUser?.uid)
         authUI = FUIAuth.defaultAuthUI()
         authUI?.delegate = self
         
         if authUI.auth?.currentUser != nil {
+            authUI.auth?.currentUser?.getIDToken(completion: { (token, error) in
+                if (error != nil) {
+                    print(error)
+                }else {
+                    print ("Token here -->", token)
+                }
+            })
             goToHomeScreen()
         } else {
             signIn()
@@ -38,6 +46,13 @@ class StartUpViewController: UIViewController {
     
     @IBAction func getStartedClicked( _ sender: Any){
         if authUI.auth?.currentUser != nil {
+            authUI.auth?.currentUser?.getIDToken(completion: { (token, error) in
+                if (error != nil) {
+                    print(error)
+                }else {
+                    print ("Token -->", token)
+                }
+            })
             self.goToHomeScreen()
         }else {
             self.signIn()
@@ -69,8 +84,23 @@ class StartUpViewController: UIViewController {
         ]
         if authUI.auth?.currentUser == nil {
             self.authUI?.providers = providers
+            authUI.auth?.currentUser?.getIDToken(completion: { (token, error) in
+                if (error != nil) {
+                    print(error)
+                }else {
+                    print ("Token here -->", token)
+                }
+            })
+
             present(authUI.authViewController(), animated: true, completion: nil)
         } else {
+            authUI.auth?.currentUser?.getIDToken(completion: { (token, error) in
+                           if (error != nil) {
+                               print(error)
+                           }else {
+                               print ("Token here -->", token)
+                           }
+                       })
             goToHomeScreen()
         }
     }
@@ -78,8 +108,15 @@ class StartUpViewController: UIViewController {
     func goToHomeScreen() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let mainVC = storyboard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
+
+       
+
         let navigavtionController = UINavigationController(rootViewController: mainVC)
-        present(navigavtionController, animated: true, completion: nil)
+        print("Nav C", self.navigationController)
+
+      
+        self.navigationController?.pushViewController(mainVC, animated: true)
+        //present(navigavtionController, animated: true, completion: nil)
     
         //self.view.window?.rootViewController =
 //        let appDelegate = UIApplication.shared.delegate as? AppDelegate
