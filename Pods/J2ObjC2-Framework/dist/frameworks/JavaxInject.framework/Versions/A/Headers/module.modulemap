@@ -1,0 +1,6 @@
+module JavaxInject {
+  umbrella header "JavaxInject.h"
+
+  export *
+  module * { export * }
+}

@@ -78,9 +78,7 @@ class StartUpViewController: UIViewController {
     //SIGN IN FUNCTION
     func signIn() {
         let providers: [FUIAuthProvider] = [
-            FUIGoogleAuth(),
-            FUIEmailAuth(),
-            FUIAnonymousAuth()
+            FUIEmailAuth()
         ]
         if authUI.auth?.currentUser == nil {
             self.authUI?.providers = providers

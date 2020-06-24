@@ -23,8 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
        didFinishLaunchingWithOptions launchOptions:
         [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
        FirebaseApp.configure()
-        
-        goToHomeScreen()
+        userAuth()
        return true
      }
     
@@ -32,8 +31,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if Auth.auth().currentUser != nil {
                    goToHomeScreen()
                } else {
-                   //signIn()
+                   signIn()
                }
+    }
+    
+    
+    func signIn() {
+        
+
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let startUpVC = storyboard.instantiateViewController(withIdentifier: "StartUpViewController") as! StartUpViewController
+        let navigavtionController = UINavigationController(rootViewController: startUpVC)
+        
+        
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        self.window?.rootViewController = navigavtionController
+        self.window?.makeKeyAndVisible()
     }
     
     func goToHomeScreen() {

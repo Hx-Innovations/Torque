@@ -1,0 +1,6 @@
+framework module Pods_Torque {
+  umbrella header "Pods-Torque-umbrella.h"
+
+  export *
+  module * { export * }
+}
