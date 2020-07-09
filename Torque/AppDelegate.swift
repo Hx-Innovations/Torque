@@ -40,12 +40,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let mainVC = storyboard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
+        let mainVC = storyboard.instantiateViewController(withIdentifier: "MainTabBarController") as! MainTabBarController
         let navigavtionController = UINavigationController(rootViewController: mainVC)
         
         
         self.window = UIWindow(frame: UIScreen.main.bounds)
-        self.window?.rootViewController = navigavtionController
+        self.window?.rootViewController = mainVC
         self.window?.makeKeyAndVisible()
          // present(navigavtionController, animated: true, completion: nil)
            /*

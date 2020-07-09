@@ -552,7 +552,7 @@ class ViewController: BaseViewController, MFMailComposeViewControllerDelegate {
     
 }
 
-// MARK: - Device Management
+// MARK: - IMU Device Management
 extension ViewController {
 
     @IBAction func actionPairDevice() {

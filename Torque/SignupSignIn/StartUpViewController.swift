@@ -107,7 +107,7 @@ class StartUpViewController: UIViewController {
     
     func goToHomeScreen() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let mainVC = storyboard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
+        let mainVC = storyboard.instantiateViewController(withIdentifier: "MainTabBarController") as! MainTabBarController
 
        
 
