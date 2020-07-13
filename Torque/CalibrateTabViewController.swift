@@ -11,6 +11,7 @@ import WearnotchSDK
 import CoreBluetooth
 
 class CalibrateTabViewController: UIViewController {
+    @IBOutlet weak var PickerView: UIView!
     
     @IBOutlet weak var dockAnimationImageView: UIImageView!
     @IBOutlet weak var statusLabel: UILabel!
@@ -22,6 +23,9 @@ class CalibrateTabViewController: UIViewController {
     var currentCancellable: NotchCancellable? = nil
     var MVCDict: [String:Double] = [:]
     var blueToothPeripheralsDelegate: BluetoothControllerDelegate?
+    
+    var shoeId: String = ""
+    var shoeName: String = "initial shoe"
     
     
     private var selectedConfiguration: ConfigurationType = ConfigurationType.chest1 {
@@ -56,7 +60,13 @@ class CalibrateTabViewController: UIViewController {
     }
 
     @IBAction func organisations() {
-        
+     //performSegue(withIdentifier: "Organizations", sender: nil)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let orgVC = storyboard.instantiateViewController(identifier: "OrgViewController") as! OrgViewController
+        orgVC.shoeSelectDelegate = self
+        let navVC = UINavigationController(rootViewController: orgVC)
+        //self.navigationController?.present(orgVC, animated: true, completion: nil)
+        self.present(navVC, animated: true, completion: nil)
     }
     
     @IBAction func changeWorkout() {
@@ -78,7 +88,7 @@ class CalibrateTabViewController: UIViewController {
         present(selectionController, animated: true, completion: nil)
     }
     @IBAction func changeTime() {
-        
+        openPickerView()
     }
     @IBAction func uncheckedInit() {
         
@@ -187,6 +197,28 @@ class CalibrateTabViewController: UIViewController {
        // let vc = nav?.topViewController as? PeripheralsViewController
         nav?.delegateForPeripheralView = self
     }
+    
+    private func openPickerView() {
+        PickerView.isHidden = false
+//        UIView.transition(with: pickerContainerView,
+//                          duration: 0.2,
+//                          options: .transitionFlipFromTop,
+//                          animations: {
+//                            self.pickerContainerView.alpha = 1
+//                            self.view.layoutIfNeeded()
+//        },
+//                          completion: nil)
+    }
+    
+    private func closePickerView() {
+//        UIView.transition(with: pickerContainerView,
+//                          duration: 0.2,
+//                          options: [ .transitionFlipFromBottom ],
+//                          animations: {
+//                            self.pickerContainerView.alpha = 0
+//                            self.view.layoutIfNeeded()
+//        }, completion: nil)
+    }
 }
 
 
@@ -221,4 +253,12 @@ extension CalibrateTabViewController: PeripheralsViewControllerDelegate {
         BluetoothPreferences.peripherals = array
     }
     
+}
+
+extension CalibrateTabViewController: ShoeSelectionDelegate {
+    func didSelectShoe(name: String, id: String) {
+        self.shoeId = id
+        self.shoeName = name
+        print(shoeId, "shoeId")
+    }
 }

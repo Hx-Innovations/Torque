@@ -55,6 +55,7 @@
 		886E6FD223CD01D4005E0DEA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 886E6FD023CD01D4005E0DEA /* LaunchScreen.storyboard */; };
 		886E6FDD23CD01D4005E0DEA /* TorqueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886E6FDC23CD01D4005E0DEA /* TorqueTests.swift */; };
 		886E6FE823CD01D4005E0DEA /* TorqueUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886E6FE723CD01D4005E0DEA /* TorqueUITests.swift */; };
+		889E81CB24BCDDC400A1A083 /* Extensions+CollectTabVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889E81CA24BCDDC400A1A083 /* Extensions+CollectTabVC.swift */; };
 		88C0BAC624AD164000306603 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C0BAC524AD164000306603 /* MainTabBarController.swift */; };
 		88C0BAC824AD209400306603 /* ConnectTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C0BAC724AD209400306603 /* ConnectTabViewController.swift */; };
 		88C0BACA24AD20AC00306603 /* CalibrateTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C0BAC924AD20AC00306603 /* CalibrateTabViewController.swift */; };
@@ -137,6 +138,7 @@
 		886E6FE323CD01D4005E0DEA /* TorqueUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TorqueUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		886E6FE723CD01D4005E0DEA /* TorqueUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TorqueUITests.swift; sourceTree = "<group>"; };
 		886E6FE923CD01D4005E0DEA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		889E81CA24BCDDC400A1A083 /* Extensions+CollectTabVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extensions+CollectTabVC.swift"; sourceTree = "<group>"; };
 		88C0BAC524AD164000306603 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		88C0BAC724AD209400306603 /* ConnectTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectTabViewController.swift; sourceTree = "<group>"; };
 		88C0BAC924AD20AC00306603 /* CalibrateTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalibrateTabViewController.swift; sourceTree = "<group>"; };
@@ -309,6 +311,7 @@
 				88C0BAC524AD164000306603 /* MainTabBarController.swift */,
 				88C0BAC924AD20AC00306603 /* CalibrateTabViewController.swift */,
 				88C0BACB24AD20C400306603 /* CollectTabViewController.swift */,
+				889E81CA24BCDDC400A1A083 /* Extensions+CollectTabVC.swift */,
 				88C0BAC724AD209400306603 /* ConnectTabViewController.swift */,
 				886E6FCE23CD01D4005E0DEA /* Assets.xcassets */,
 				8857D4A723FDB6D8007587A2 /* Visualiser.xcassets */,
@@ -577,6 +580,7 @@
 				8857D49123FDB6AE007587A2 /* MVCLateralViewController.swift in Sources */,
 				8857D49D23FDB6C2007587A2 /* Email.swift in Sources */,
 				8857D49C23FDB6C2007587A2 /* Extensions.swift in Sources */,
+				889E81CB24BCDDC400A1A083 /* Extensions+CollectTabVC.swift in Sources */,
 				8857D4A523FDB6CC007587A2 /* GenericOverlay.swift in Sources */,
 				8857D4CF23FDB762007587A2 /* Peripheral.swift in Sources */,
 				8857D4D423FDB762007587A2 /* PeripheralTableViewCell.swift in Sources */,

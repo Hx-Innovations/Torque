@@ -13,6 +13,16 @@ class MainTabSharedData {
     // static var bluetoothManager: Corebl
     static var array: [Peripheral]?
     static var btmanager: CBCentralManager?
+    static var captureTimeConfiguration = 30
+    static var shoeId: String = ""
+    static var shoeName: String = "initial shoe"
+    static var selectedConfiguration: ConfigurationType = ConfigurationType.chest1 {
+        didSet {
+            //selectedConfigurationLabel.text = selectedConfiguration.name
+            //steadyInitButton.setTitle("\(selectedConfiguration.notchCount) notch init", for: .normal)
+            //captureInitButton.setTitle("\(selectedConfiguration.notchCount) notch init", for: .normal)
+        }
+    }
 }
 
 class MainTabBarController: UITabBarController {

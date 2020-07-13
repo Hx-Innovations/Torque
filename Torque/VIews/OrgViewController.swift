@@ -17,6 +17,7 @@ class OrgViewController: BaseViewController, UITableViewDataSource, UITableViewD
     var organization: [String] = []
     var tableView = UITableView()
     let s = FireViewController()
+    weak var shoeSelectDelegate: ShoeSelectionDelegate?
     
     @IBOutlet weak var isisTable: UITableView!
     override func viewDidLoad() {
@@ -97,6 +98,7 @@ class OrgViewController: BaseViewController, UITableViewDataSource, UITableViewD
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let shoesVC = storyboard.instantiateViewController(identifier: "ShoeViewController") as! ShoeViewController
+        shoesVC.shoeSelectDelegate = self
         let orgId = orgs[indexPath.row]["orgId"] ?? ""
         shoesVC.organizationId = orgId
         self.navigationController?.pushViewController(shoesVC, animated: true)
@@ -148,3 +150,8 @@ class OrgViewController: BaseViewController, UITableViewDataSource, UITableViewD
          Pass the selected object to the new view controller.
     }
     */
+extension OrgViewController: ShoeSelectionDelegate {
+    func didSelectShoe(name: String, id: String) {
+        shoeSelectDelegate?.didSelectShoe(name: name, id: id)
+    }
+}

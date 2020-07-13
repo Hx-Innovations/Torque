@@ -7,10 +7,12 @@
 //
 
 import Foundation
-
 import UIKit
 
 
+protocol ShoeSelectionDelegate: class {
+    func didSelectShoe(name: String, id: String)
+}
 class ShoeViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate {
     
     
@@ -18,6 +20,7 @@ class ShoeViewController: BaseViewController, UITableViewDataSource, UITableView
     var shoesText : [[String: String]] = [["abcd": "hello", "efgh": "hello2"]]
     var shoes: [String] = []
     var tableView = UITableView()
+    weak var shoeSelectDelegate: ShoeSelectionDelegate?
     
     var organizationId: String = ""
     let s = FireViewController()
@@ -59,13 +62,22 @@ class ShoeViewController: BaseViewController, UITableViewDataSource, UITableView
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        for controller in self.navigationController!.viewControllers as Array {
+        let shoeName = shoesText[indexPath.row]["name"] ?? ""
+        let shoeId = shoesText[indexPath.row]["shoeId"] ?? ""
+        self.shoeSelectDelegate?.didSelectShoe(name: shoeName, id: shoeId)
+        self.navigationController?.dismiss(animated: true, completion: nil)
+        /*if let controller = self.navigationController?.presentingViewController as? CalibrateTabViewController {
+            controller.shoeName = shoesText[indexPath.row]["name"] ?? ""
+            controller.shoeId = shoesText[indexPath.row]["shoeId"] ?? ""
+            self.navigationController?.dismiss(animated: true)
+        }*/
+        /*for controller in self.navigationController!.viewControllers as Array {
             if let controller = controller as? ViewController {
                 controller.shoeName = shoesText[indexPath.row]["name"] ?? ""
                 controller.shoeId = shoesText[indexPath.row]["shoeId"] ?? ""
                 self.navigationController?.popToViewController(controller, animated: true)
             }
-        }
+        }*/
     }
 
     
